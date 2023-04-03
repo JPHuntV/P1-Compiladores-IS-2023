@@ -1,0 +1,35 @@
+package src;
+import java_cup.runtime.Symbol;
+
+parser code{:
+    public String resultado = "";
+:}
+
+
+
+
+
+action code {::}
+
+/*---------------------------declaraciones------------------------*/
+
+terminal PLUS, MINUS,TIMES, DIV, LPAREN, RPAREN;
+terminal String numero;
+
+
+non terminal  inicio, expr;
+//precedencia
+precedence left PLUS, MINUS;
+precedence left TIMES, DIV;
+
+start with inicio;
+
+inicio ::= expr:e {: RESULT = e; :};
+
+expr   ::= expr:e1 PLUS  expr:e2   {: RESULT = (Integer)e1 + (Integer)e2; :}
+        |   expr:e1 MINUS expr:e2   {: RESULT = (Integer)e1 - (Integer)e2; :}
+        |   expr:e1 TIMES expr:e2   {: RESULT = (Integer)e1 * (Integer)e2; :}
+        |   expr:e1 DIV expr:e2  {: RESULT = (Integer)e1 / (Integer)e2; :}
+        |   LPAREN expr:e RPAREN    {: RESULT = e; :}
+        |   numero:n                {: RESULT = n; :}
+        ;

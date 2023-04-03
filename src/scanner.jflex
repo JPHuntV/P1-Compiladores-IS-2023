@@ -36,7 +36,7 @@ numero = [0-9]+
     "-"             {return new Symbol(sym.MINUS, yycolumn, yyline, yytext()); }
     "*"             {return new Symbol(sym.TIMES, yycolumn, yyline, yytext()); }
     "/"             {return new Symbol(sym.DIV, yycolumn, yyline, yytext()); }
-    "("             {return new Symbol(sym.LPARE, yycolumn, yyline, yytext()); }
+    "("             {return new Symbol(sym.LPAREN, yycolumn, yyline, yytext()); }
     ")"             {return new Symbol(sym.RPAREN, yycolumn, yyline, yytext()); }
 }
 

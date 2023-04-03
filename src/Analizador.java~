@@ -708,7 +708,7 @@ public class Analizador implements java_cup.runtime.Scanner {
           // fall through
           case 9: break;
           case 2:
-            { return new Symbol(sym.LPAREN, yycolumn, yyline, yytext());
+            { return new Symbol(sym.LPARE, yycolumn, yyline, yytext());
             }
           // fall through
           case 10: break;
