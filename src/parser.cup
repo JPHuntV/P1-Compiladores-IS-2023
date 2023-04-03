@@ -13,22 +13,29 @@ action code {::}
 
 /*---------------------------declaraciones------------------------*/
 
-terminal PLUS, MINUS,TIMES, DIV, LPAREN, RPAREN;
-terminal String numero;
+terminal REXC, ARROBA, HASH, DOLLAR, PORCIENTO, CONJ, AND, MULT, LPAREN, RPAREN, 
+            MENOS, GUIONBAJO, MAS, ASIGNACION, LBRACKET, RBRACKET, LBRACE, RBRACE, 
+            SEMICOLON, DOSPUNTOS, COMILLASIM, COMILLADOB, COMA, PUNTO, MENOR, MAYOR, 
+            RINTERRO, DIV, PIPE, SLASH, MENORIGUAL, MAYORIGUAL, EQUAL, NOTEQUAL, POTENCIA, 
+            MODULO, INCREMENTO, DECREMENTO, NOT, INT, FLOAT, STRING, CHAR, ARRAY, BOOL, 
+            MAIN, TRUE, FALSE, IF, ELIF, ELSE, WHILE, DO, FOR, RETURN, BREAK, LCOMENTB, 
+            RCOMENTB;
+
+terminal String numero, letra, simbolo, operador;
 
 
 non terminal  inicio, expr;
 //precedencia
-precedence left PLUS, MINUS;
-precedence left TIMES, DIV;
+precedence left MAS, MENOS;
+precedence left MULT, DIV;
 
 start with inicio;
 
 inicio ::= expr:e {: RESULT = e; :};
 
-expr   ::= expr:e1 PLUS  expr:e2   {: RESULT = (Integer)e1 + (Integer)e2; :}
-        |   expr:e1 MINUS expr:e2   {: RESULT = (Integer)e1 - (Integer)e2; :}
-        |   expr:e1 TIMES expr:e2   {: RESULT = (Integer)e1 * (Integer)e2; :}
+expr   ::= expr:e1 MAS  expr:e2   {: RESULT = (Integer)e1 + (Integer)e2; :}
+        |   expr:e1 MENOS expr:e2   {: RESULT = (Integer)e1 - (Integer)e2; :}
+        |   expr:e1 MULT expr:e2   {: RESULT = (Integer)e1 * (Integer)e2; :}
         |   expr:e1 DIV expr:e2  {: RESULT = (Integer)e1 / (Integer)e2; :}
         |   LPAREN expr:e RPAREN    {: RESULT = e; :}
         |   numero:n                {: RESULT = n; :}

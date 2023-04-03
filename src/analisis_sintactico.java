@@ -41,21 +41,21 @@ public class analisis_sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\020\000\006\010\005\012\004\001\002\000\016\002" +
-    "\ufffa\004\ufffa\005\ufffa\006\ufffa\007\ufffa\011\ufffa\001\002" +
-    "\000\006\010\005\012\004\001\002\000\014\002\000\004" +
-    "\011\005\012\006\014\007\013\001\002\000\004\002\010" +
-    "\001\002\000\004\002\001\001\002\000\006\010\005\012" +
-    "\004\001\002\000\006\010\005\012\004\001\002\000\006" +
-    "\010\005\012\004\001\002\000\006\010\005\012\004\001" +
-    "\002\000\016\002\ufffd\004\ufffd\005\ufffd\006\ufffd\007\ufffd" +
-    "\011\ufffd\001\002\000\016\002\ufffc\004\ufffc\005\ufffc\006" +
-    "\ufffc\007\ufffc\011\ufffc\001\002\000\016\002\ufffe\004\ufffe" +
-    "\005\ufffe\006\014\007\013\011\ufffe\001\002\000\016\002" +
-    "\uffff\004\uffff\005\uffff\006\014\007\013\011\uffff\001\002" +
-    "\000\014\004\011\005\012\006\014\007\013\011\022\001" +
-    "\002\000\016\002\ufffb\004\ufffb\005\ufffb\006\ufffb\007\ufffb" +
-    "\011\ufffb\001\002" });
+    "\000\020\000\006\014\005\076\004\001\002\000\016\002" +
+    "\ufffa\013\ufffa\015\ufffa\016\ufffa\020\ufffa\037\ufffa\001\002" +
+    "\000\006\014\005\076\004\001\002\000\014\002\000\013" +
+    "\011\016\013\020\012\037\014\001\002\000\004\002\010" +
+    "\001\002\000\004\002\001\001\002\000\006\014\005\076" +
+    "\004\001\002\000\006\014\005\076\004\001\002\000\006" +
+    "\014\005\076\004\001\002\000\006\014\005\076\004\001" +
+    "\002\000\016\002\ufffc\013\ufffc\015\ufffc\016\ufffc\020\ufffc" +
+    "\037\ufffc\001\002\000\016\002\ufffe\013\011\015\ufffe\016" +
+    "\ufffe\020\ufffe\037\014\001\002\000\016\002\uffff\013\011" +
+    "\015\uffff\016\uffff\020\uffff\037\014\001\002\000\016\002" +
+    "\ufffd\013\ufffd\015\ufffd\016\ufffd\020\ufffd\037\ufffd\001\002" +
+    "\000\014\013\011\015\022\016\013\020\012\037\014\001" +
+    "\002\000\016\002\ufffb\013\ufffb\015\ufffb\016\ufffb\020\ufffb" +
+    "\037\ufffb\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -164,7 +164,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // expr ::= expr PLUS expr 
+          case 2: // expr ::= expr MAS expr 
             {
               Object RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -179,7 +179,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // expr ::= expr MINUS expr 
+          case 3: // expr ::= expr MENOS expr 
             {
               Object RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
@@ -194,7 +194,7 @@ class CUP$analisis_sintactico$actions {
           return CUP$analisis_sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // expr ::= expr TIMES expr 
+          case 4: // expr ::= expr MULT expr 
             {
               Object RESULT =null;
 		int e1left = ((java_cup.runtime.Symbol)CUP$analisis_sintactico$stack.elementAt(CUP$analisis_sintactico$top-2)).left;
