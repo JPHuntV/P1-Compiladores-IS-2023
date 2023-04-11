@@ -8,25 +8,135 @@ package src;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int MINUS = 3;
+  public static final int DOSPUNTOS = 21;
+  public static final int LBRACKET = 16;
+  public static final int MULT = 9;
+  public static final int CHAR = 44;
+  public static final int RINTERRO = 28;
+  public static final int GUIONBAJO = 13;
+  public static final int PORCIENTO = 6;
+  public static final int SLASH = 31;
+  public static final int CONJ = 7;
+  public static final int NOTEQUAL = 35;
+  public static final int HASH = 4;
+  public static final int LPAREN = 10;
+  public static final int INT = 41;
+  public static final int ARRAY = 45;
+  public static final int letra = 61;
+  public static final int FOR = 55;
+  public static final int REXC = 2;
+  public static final int RPAREN = 11;
+  public static final int NOT = 40;
+  public static final int MENORIGUAL = 32;
+  public static final int SEMICOLON = 20;
+  public static final int AND = 8;
+  public static final int BOOL = 46;
+  public static final int ARROBA = 3;
+  public static final int DIV = 29;
+  public static final int INCREMENTO = 38;
+  public static final int numero = 60;
+  public static final int IF = 50;
+  public static final int MAIN = 47;
+  public static final int RCOMENTB = 59;
+  public static final int MAYORIGUAL = 33;
   public static final int EOF = 0;
-  public static final int PLUS = 2;
-  public static final int numero = 8;
-  public static final int DIV = 5;
+  public static final int RETURN = 56;
+  public static final int RBRACKET = 17;
+  public static final int EQUAL = 34;
+  public static final int TRUE = 48;
+  public static final int DECREMENTO = 39;
   public static final int error = 1;
-  public static final int RPAREN = 7;
-  public static final int TIMES = 4;
-  public static final int LPAREN = 6;
+  public static final int COMILLADOB = 23;
+  public static final int COMA = 24;
+  public static final int PIPE = 30;
+  public static final int MODULO = 37;
+  public static final int MENOS = 12;
+  public static final int MENOR = 26;
+  public static final int simbolo = 62;
+  public static final int BREAK = 57;
+  public static final int COMILLASIM = 22;
+  public static final int ASIGNACION = 15;
+  public static final int MAYOR = 27;
+  public static final int POTENCIA = 36;
+  public static final int operador = 63;
+  public static final int ELSE = 52;
+  public static final int LBRACE = 18;
+  public static final int PUNTO = 25;
+  public static final int WHILE = 53;
+  public static final int DOLLAR = 5;
+  public static final int FLOAT = 42;
+  public static final int RBRACE = 19;
+  public static final int STRING = 43;
+  public static final int FALSE = 49;
+  public static final int ELIF = 51;
+  public static final int DO = 54;
+  public static final int LCOMENTB = 58;
+  public static final int MAS = 14;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
-  "PLUS",
-  "MINUS",
-  "TIMES",
-  "DIV",
+  "REXC",
+  "ARROBA",
+  "HASH",
+  "DOLLAR",
+  "PORCIENTO",
+  "CONJ",
+  "AND",
+  "MULT",
   "LPAREN",
   "RPAREN",
-  "numero"
+  "MENOS",
+  "GUIONBAJO",
+  "MAS",
+  "ASIGNACION",
+  "LBRACKET",
+  "RBRACKET",
+  "LBRACE",
+  "RBRACE",
+  "SEMICOLON",
+  "DOSPUNTOS",
+  "COMILLASIM",
+  "COMILLADOB",
+  "COMA",
+  "PUNTO",
+  "MENOR",
+  "MAYOR",
+  "RINTERRO",
+  "DIV",
+  "PIPE",
+  "SLASH",
+  "MENORIGUAL",
+  "MAYORIGUAL",
+  "EQUAL",
+  "NOTEQUAL",
+  "POTENCIA",
+  "MODULO",
+  "INCREMENTO",
+  "DECREMENTO",
+  "NOT",
+  "INT",
+  "FLOAT",
+  "STRING",
+  "CHAR",
+  "ARRAY",
+  "BOOL",
+  "MAIN",
+  "TRUE",
+  "FALSE",
+  "IF",
+  "ELIF",
+  "ELSE",
+  "WHILE",
+  "DO",
+  "FOR",
+  "RETURN",
+  "BREAK",
+  "LCOMENTB",
+  "RCOMENTB",
+  "numero",
+  "letra",
+  "simbolo",
+  "operador"
   };
 }
 
