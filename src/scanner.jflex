@@ -1,4 +1,4 @@
-//------------------paquetes importaciones
+///------------------paquetes importaciones
 package src;
 import java_cup.runtime.*;
 
@@ -48,51 +48,73 @@ simbolo = "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*"
 //############################################################
 //remplazo estructura de los simbolos de las reglas lexicas
 <YYINITIAL>{
-
-    "!"             {return new Symbol(sym.REXC, yycolumn, yyline, yytext()); }
-    "@"             {return new Symbol(sym.ARROBA, yycolumn, yyline, yytext()); }
-    "#"             {return new Symbol(sym.HASH, yycolumn, yyline, yytext()); }
-    "$"             {return new Symbol(sym.DOLLAR, yycolumn, yyline, yytext()); }
-    "%"             {return new Symbol(sym.PORCIENTO, yycolumn, yyline, yytext()); }
-    "^"             {return new Symbol(sym.CONJ, yycolumn, yyline, yytext()); }
-    "&"             {return new Symbol(sym.AND, yycolumn, yyline, yytext()); }
-    "*"             {return new Symbol(sym.MULT, yycolumn, yyline, yytext()); }
-    "("             {return new Symbol(sym.LPAREN, yycolumn, yyline, yytext()); }
-    ")"             {return new Symbol(sym.RPAREN, yycolumn, yyline, yytext()); }
-    "-"             {return new Symbol(sym.MENOS, yycolumn, yyline, yytext()); }
-    "_"             {return new Symbol(sym.GUIONBAJO, yycolumn, yyline, yytext()); }
-    "+"             {return new Symbol(sym.MAS, yycolumn, yyline, yytext()); }
-    "="             {return new Symbol(sym.ASIGNACION, yycolumn, yyline, yytext()); }
-    "["             {return new Symbol(sym.LBRACKET, yycolumn, yyline, yytext()); }
-    "]"             {return new Symbol(sym.RBRACKET, yycolumn, yyline, yytext()); }
-    "{"             {return new Symbol(sym.LBRACE, yycolumn, yyline, yytext()); }
-    "}"             {return new Symbol(sym.RBRACE, yycolumn, yyline, yytext()); }
-    ";"             {return new Symbol(sym.SEMICOLON, yycolumn, yyline, yytext()); }
-    ":"             {return new Symbol(sym.DOSPUNTOS, yycolumn, yyline, yytext()); }
-    "\'"            {return new Symbol(sym.COMILLASIM, yycolumn, yyline, yytext()); }
-    "\""            {return new Symbol(sym.COMILLADOB, yycolumn, yyline, yytext()); }
-    ","             {return new Symbol(sym.COMA, yycolumn, yyline, yytext()); }
-    "."             {return new Symbol(sym.PUNTO, yycolumn, yyline, yytext()); }
-    "<"             {return new Symbol(sym.MENOR, yycolumn, yyline, yytext()); }
-    ">"             {return new Symbol(sym.MAYOR, yycolumn, yyline, yytext()); }
-    "?"             {return new Symbol(sym.RINTERRO, yycolumn, yyline, yytext()); }
-    "/"             {return new Symbol(sym.DIV, yycolumn, yyline, yytext()); }
-    "|"             {return new Symbol(sym.PIPE, yycolumn, yyline, yytext()); }
-    "\\"            {return new Symbol(sym.SLASH, yycolumn, yyline, yytext()); }
-    "<="            {return new Symbol(sym.MENORIGUAL, yycolumn, yyline, yytext()); }
-    ">="            {return new Symbol(sym.MAYORIGUAL, yycolumn, yyline, yytext()); }
-    "=="            {return new Symbol(sym.EQUAL, yycolumn, yyline, yytext()); }
-    "!="            {return new Symbol(sym.NOTEQUAL, yycolumn, yyline, yytext()); }
-    "**"            {return new Symbol(sym.POTENCIA, yycolumn, yyline, yytext()); }
-    "~"             {return new Symbol(sym.MODULO, yycolumn, yyline, yytext()); }
-    "++"            {return new Symbol(sym.INCREMENTO, yycolumn, yyline, yytext()); }
-    "--"            {return new Symbol(sym.DECREMENTO, yycolumn, yyline, yytext()); }
-    "not"           {return new Symbol(sym.NOT, yycolumn, yyline, yytext()); }
-
+    "!"             {return symbol(REXC); }
+    "@"             {return symbol(ARROBA); }
+    "#"             {return symbol(OR); }
+    "$"             {return symbol(DOLLAR); }
+    //"%"             {return symbol(PORCIENTO); }
+    "^"             {return symbol(AND); }
+    //"&"             {return symbol(AMPER); }
+    "*"             {return symbol(MULT); }
+    "("             {return symbol(LPAREN); }
+    ")"             {return symbol(RPAREN); }
+    "-"             {return symbol(MENOS); }
+    //"_"             {return symbol(GUIONBAJO); }
+    "+"             {return symbol(MAS); }
+    "="             {return symbol(ASIG); }
+    "["             {return symbol(LBRACKET); }
+    "]"             {return symbol(RBRACKET); }
+    "{"             {return symbol(LBRACE); }
+    "}"             {return symbol(RBRACE); }
+    //";"             {return symbol(SEMICOLON); }
+    //":"             {return symbol(DOSPUNTOS); }
+    //"\'"            {return symbol(COMILLASIM); }
+    //"\""            {return symbol(COMILLADOB); }
+    ","             {return symbol(COMA); }
+    //"."             {return symbol(PUNTO); }
+    "<"             {return symbol(MENOR); }
+    ">"             {return symbol(MAYOR); }
+    //"?"             {return symbol(RINTERRO); }
+    "/"             {return symbol(DIV); }
+    //"|"             {return symbol(PIPE); }
+    //"\\"            {return symbol(SLASH); }
+    "<="            {return symbol(MENORIGUAL); }
+    ">="            {return symbol(MAYORIGUAL); }
+    "=="            {return symbol(EQUAL); }
+    "!="            {return symbol(NOTEQUAL); }
+    "**"            {return symbol(POTENCIA); }
+    "~"             {return symbol(MODULO); }
+    "++"            {return symbol(INCREMENTO); }
+    "--"            {return symbol(DECREMENTO); }
+    "not"           {return symbol(NOT); }
+    "int"           {return symbol(INT); }
+    "float"         {return symbol(FLOAT); }
+    "string"        {return symbol(STRING); }
+    "char"          {return symbol(CHAR); }
+    "array"         {return symbol(ARRAY); }
+    "bool"          {return symbol(BOOL); }
+    "main"          {return symbol(MAIN); }
+    "true"          {return symbol(LITERAL_BOOL, true); }
+    "false"         {return symbol(LITERAL_BOOL, false); }
+    "if"            {return symbol(IF); }
+    "elif"          {return symbol(ELIF); }
+    "else"          {return symbol(ELSE); }
+    "while"         {return symbol(WHILE); }
+    "do"            {return symbol(DO); }
+    "for"           {return symbol(FOR); }
+    "return"        {return symbol(RETURN); }
+    "break"         {return symbol(BREAK); }
+    "leer"          {return symbol(LEER); }
+    "escribir"      {return symbol(ESCRIBIR); }
 }
 
 //ER
 <YYINITIAL> {numero}            {return new Symbol(sym.numero, yycolumn, yyline, yytext()); }
+<YYINITIAL> {floatN}      {return new Symbol(sym.floatN, yycolumn, yyline, yytext()); }
+<YYINITIAL> {letra}            {return new Symbol(sym.letra, yycolumn, yyline, yytext()); }
+<YYINITIAL> {identificador}      {return new Symbol(sym.IDENTIFICADOR, yycolumn, yyline, yytext()); }
+<YYINITIAL> {simbolo}            {return new Symbol(sym.simbolo, yycolumn, yyline, yytext()); }
+//<YYINITIAL> {operador}            {return new Symbol(sym.operador, yycolumn, yyline, yytext()); }
 
 
 //----------------espacios en blanco
