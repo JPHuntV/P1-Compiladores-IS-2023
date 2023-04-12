@@ -30,6 +30,13 @@ import java_cup.runtime.*;
 
 
 //----------Expresiones Regulares
+
+//numero = (-?)[1-9][0-9]* | 0
+//floatN = (((-?)[1-9][0-9]*) | 0) . [0-9]+ | 0.0
+
+
+//operador = "+" | "-" | "*" | "/" | "<" | ">" | "<=" | ">=" | "==" | "!="
+/**/
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
 
@@ -37,7 +44,7 @@ WhiteSpace = {LineTerminator} | [ \t\f]
 
 Comment = {EndOfLineComment}  
 EndOfLineComment = "@" {InputCharacter}* {LineTerminator}? 
-
+//any = [\s\S]*?
 numero = 0 | [1-9][0-9]*
 identificador = [a-zA-Z_] [a-zA-Z0-9_]*
 float    = [0-9]+ \. [0-9]*
@@ -52,6 +59,7 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
 //------estados
 %state COMMENTB
 %%
+
 
 
 <YYINITIAL>{
@@ -114,6 +122,8 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     "leer"          {return symbol(LEER); }
     "escribir"      {return symbol(ESCRIBIR); }
 
+    "/_"      { yybegin(COMMENTB); }
+
     "/_"            { yybegin(COMMENTB); }
 
     {numero}            {return symbol(LITERAL_INT, new Integer(Integer.parseInt(yytext()))); }
@@ -128,14 +138,10 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     {WhiteSpace}        { /* ignore */ }
 }
 
-<COMMENTB>{
-  [^_]*      { }
-  "_"+[^_/]* { }
-  "_"+"/"    { yybegin(YYINITIAL); }
-  .          { }
-}
 
 
+
+/* error fallback */
 [^]                              { throw new RuntimeException("Illegal character \""+yytext()+
                                                               "\" at line "+yyline+", column "+yycolumn); }
 <<EOF>>                          { return symbol(EOF); }
