@@ -28,21 +28,14 @@ import java_cup.runtime.*;
   }
 %}
 
+
 //----------Expresiones Regulares
-
-//numero = (-?)[1-9][0-9]* | 0
-//floatN = (((-?)[1-9][0-9]*) | 0) . [0-9]+ | 0.0
-
-
-//operador = "+" | "-" | "*" | "/" | "<" | ">" | "<=" | ">=" | "==" | "!="
-/**/
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
 
 WhiteSpace = {LineTerminator} | [ \t\f]
 
-Comment = {EndOfLineComment} 
-
+Comment = {EndOfLineComment}  
 EndOfLineComment = "@" {InputCharacter}* {LineTerminator}? 
 
 numero = 0 | [1-9][0-9]*
@@ -53,12 +46,13 @@ simbolo = "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*"
     | "}" | ";" | ":" | "\'" | '\"' | "," | "." | "<" | ">" 
     | "?" | "/" | "|" | "\\"
 
+
 string = \"(\\.|[^\"])*\"
 char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
 //------estados
+%state COMMENTB
 %%
 
-//--------------------reglas lexicas
 
 <YYINITIAL>{
     "!"             {return symbol(REXC); }
@@ -120,24 +114,26 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     "leer"          {return symbol(LEER); }
     "escribir"      {return symbol(ESCRIBIR); }
 
-    
-    //ER
+    "/_"            { yybegin(COMMENTB); }
+
     {numero}            {return symbol(LITERAL_INT, new Integer(Integer.parseInt(yytext()))); }
     {float}             {return symbol(LITERAL_FLOAT, new Float(yytext().substring(0,yylength()-1)));  }
 
-    {identificador}                   { return symbol(IDENTIFIER, yytext()); }
-    {string}                    {return symbol(LITERAL_STRING); }
-    {char}                    {return symbol(LITERAL_CHAR); }
-    //{simbolo}            {return symbol(simbolo, yytext()); }
-//<YYINITIAL> {operador}            {return new Symbol(operador, yycolumn, yyline, yytext()); }
-/* comments */
-    {Comment}                      { /* ignore */ }
-    /* whitespace */
-    {WhiteSpace}                   { /* ignore */ }
+    {identificador}     { return symbol(IDENTIFIER, yytext()); }
+    {string}            {return symbol(LITERAL_STRING); }
+    {char}              {return symbol(LITERAL_CHAR); }
+
+    {Comment}           { /* ignore */ }
+
+    {WhiteSpace}        { /* ignore */ }
 }
-//#################################################################################################
 
-
+<COMMENTB>{
+  [^_]*      { }
+  "_"+[^_/]* { }
+  "_"+"/"    { yybegin(YYINITIAL); }
+  .          { }
+}
 
 
 [^]                              { throw new RuntimeException("Illegal character \""+yytext()+
