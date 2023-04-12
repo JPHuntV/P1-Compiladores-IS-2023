@@ -46,16 +46,273 @@ non terminal  inicio, programa, main, funciones,
     break, argumentos, llamaFuncion, asignacion, sentencia, bloque, parametros, declaraFuncion,
     tipo, declaraArray, declaraArrayAux, declaraVar, getValorArray, setValorArray, lectura, numerico, escritura, comentario;
 
+    
+//non terminal identificador;
+//non terminal operando;
+non terminal senFuncion;
+non terminal igual, noIgual;
+non terminal intChar;
+non terminal aritBool;
+non terminal literales;
+non terminal argumento;
+//non terminal simMenos;
+
+//precedencia
 
 
 
 
-inicio ::= expr:e {: RESULT = e; :};
+precedence left MAS, MENOS;
+precedence left MULT, DIV;
+precedence left  POTENCIA, MODULO;
+precedence left AND;
+precedence left OR;
+precedence nonassoc NOT, REXC;
+precedence left RPAREN;
+precedence left LPAREN;
+precedence right DOLLAR;
+precedence right IDENTIFIER;
+start with inicio;
 
-expr   ::= expr:e1 MAS  expr:e2   {: RESULT = (Integer)e1 + (Integer)e2; :}
-        |   expr:e1 MENOS expr:e2   {: RESULT = (Integer)e1 - (Integer)e2; :}
-        |   expr:e1 MULT expr:e2   {: RESULT = (Integer)e1 * (Integer)e2; :}
-        |   expr:e1 DIV expr:e2  {: RESULT = (Integer)e1 / (Integer)e2; :}
-        |   LPAREN expr:e RPAREN    {: RESULT = e; :}
-        |   numero:n                {: RESULT = n; :}
+
+
+//inicio ::= programa:e {: RESULT = e; :};
+inicio ::= programa;
+
+
+programa ::= main
+    | funciones main
+    | main funciones
+    | funciones main funciones
+    ;
+
+main ::= INT MAIN LPAREN RPAREN LBRACE bloque RBRACE ;
+
+
+funciones ::= funciones declaraFuncion
+    | declaraFuncion
+    | comentario
+    ;
+
+
+
+//operando ::= IDENTIFIER
+//    | intLiteral
+//    | llamaFuncion
+//    ;
+
+//identificador ::= IDENTIFIER;
+
+expresion ::= expresionRelLog
+    |expresionAritmetica
+    ;
+
+/*
+    expresionAux ::= termino
+        |expresionAux opSuma termino
         ;
+
+    termino ::= factor
+        | termino opMult factor
+        ;
+
+    factor ::= operadorUnario valor
+        | valor
+        ;
+
+    valor ::= aritBool
+        |LITERAL_STRING
+        |LITERAL_CHAR
+        //|LITERAL_BOOL
+        |IDENTIFIER array
+        ;
+//opSuma ::= MAS | meno ;
+
+*/
+operadorArit::= MAS
+    | MENOS
+    | MULT 
+    | POTENCIA 
+    | DIV 
+    | MODULO
+    ;
+
+opRelacional ::= MENOR
+    | MENORIGUAL
+    | MAYOR
+    | MAYORIGUAL
+    | igual
+    | noIgual
+    ;
+igual ::= EQUAL
+    | EQUAL LITERAL_BOOL
+    ;
+noIgual ::=NOTEQUAL
+    | NOTEQUAL LITERAL_BOOL
+    ;
+//operadorArit ::= opSuma | opMult;
+
+operadorUnario ::= MENOS numerico
+    | IDENTIFIER INCREMENTO
+    | IDENTIFIER DECREMENTO
+    ;
+
+
+
+operadorLogico ::= AND
+    |OR
+    |REXC
+    |NOT
+    ;
+
+expresionAritmetica ::= operandoArit 
+    | expresionAritmetica operadorArit operandoArit
+    ;
+
+expresionRelLog ::= expresionRelacional | expresionLogica ;
+
+expresionRelacional ::= operandoRel opRelacional operandoRel ;
+
+expresionLogica ::= terminoLogico
+    | expresionLogica operadorLogico terminoLogico
+    ;
+
+
+
+terminoLogico ::= aritBool
+   // | expresionRelacional
+    | LPAREN expresionRelacional RPAREN
+    ;
+
+aritBool ::= operadorArit | LITERAL_BOOL;
+
+operandoArit ::= IDENTIFIER:e {: RESULT = e; :}
+    | LITERAL_INT 
+    | LITERAL_FLOAT 
+    | llamaFuncion
+    | operadorUnario
+    | LBRACKET array RBRACKET
+    ;
+
+operandoRel ::= operandoArit 
+    | LPAREN expresionAritmetica RPAREN
+    ;
+
+
+literales ::= LITERAL_INT
+    |LITERAL_FLOAT
+    |LITERAL_BOOL
+    |LITERAL_STRING
+    |LITERAL_CHAR
+    |LBRACKET array RBRACKET
+    ;
+
+array ::= expresion  
+    | array COMA expresion
+    ;
+
+//estructuras de control
+if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
+    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif
+    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif ELSE LBRACE bloque RBRACE
+    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ELSE LBRACE bloque RBRACE
+    ;
+
+elif ::= ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
+    | elif ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
+    ;
+
+while ::= WHILE LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ;
+
+doWhile ::= DO LBRACE bloque RBRACE WHILE LPAREN expresionRelLog RPAREN DOLLAR ;
+
+for ::= FOR LPAREN declaraVar expresionRelLog DOLLAR expresion RPAREN LBRACE bloque RBRACE ;
+
+estructuraControl ::=  if 
+    | while 
+    | doWhile 
+    | for
+    ;
+
+return ::= RETURN expresion DOLLAR ;
+
+break ::= BREAK ;
+
+argumento ::= IDENTIFIER
+    | literales
+    ;
+
+argumentos ::= argumento
+    | argumentos COMA expresion
+    ;
+
+llamaFuncion ::= IDENTIFIER LPAREN RPAREN
+    | IDENTIFIER LPAREN argumentos RPAREN
+    | lectura
+    | escritura
+    ;
+
+senFuncion ::= llamaFuncion DOLLAR ;
+
+asignacion ::= IDENTIFIER ASIG expresion DOLLAR;
+
+sentencia ::= asignacion
+    | senFuncion
+    | estructuraControl 
+    | expresion DOLLAR
+    | expresionRelLog
+    | declaraArray
+    | declaraVar DOLLAR
+    | return
+    | break DOLLAR
+    | getValorArray
+    | setValorArray
+    //| comentario
+    ;
+
+bloque ::= sentencia
+    | bloque sentencia
+    //| sentencia bloque
+    ;
+
+parametros ::= tipo IDENTIFIER
+    | parametros COMA tipo IDENTIFIER
+    ;
+
+declaraFuncion ::= tipo IDENTIFIER LPAREN parametros RPAREN LBRACE bloque RBRACE
+    | tipo IDENTIFIER LPAREN RPAREN LBRACE bloque RBRACE
+    ;
+
+tipo ::= intChar
+    |FLOAT
+    |STRING
+    |ARRAY
+    |BOOL
+    ;
+
+intChar ::= INT | CHAR;
+declaraArray ::=  intChar IDENTIFIER declaraArrayAux DOLLAR;
+    //| INT IDENTIFIER declaraArrayAux DOLLAR ;
+
+declaraArrayAux ::= LBRACKET LITERAL_INT RBRACKET
+    //| declaraArrayAux LBRACKET LITERAL_INT RBRACKET 
+    ;
+
+declaraVar ::= tipo IDENTIFIER ASIG expresion 
+    | tipo IDENTIFIER declaraArrayAux ASIG expresion 
+    ;
+
+getValorArray ::= IDENTIFIER declaraArrayAux
+    ;
+
+setValorArray ::= getValorArray ASIG expresion ;
+
+lectura ::= LEER LPAREN numerico RPAREN DOLLAR ;
+
+numerico ::= LITERAL_INT | LITERAL_FLOAT ; 
+
+escritura ::= ESCRIBIR LPAREN expresion RPAREN DOLLAR ;
+
+comentario ::= ARROBA LITERAL_STRING
+    | LCOMENTB LITERAL_STRING RCOMENTB
+    ;
