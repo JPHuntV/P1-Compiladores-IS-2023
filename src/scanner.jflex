@@ -1,4 +1,4 @@
-///------------------paquetes importaciones
+//------------------paquetes importaciones
 package src;
 import java_cup.runtime.*;
 
@@ -30,23 +30,36 @@ import java_cup.runtime.*;
 
 //----------Expresiones Regulares
 
-numero = (-?)[1-9][0-9]* | 0
-floatN = (((-?)[1-9][0-9]*) | 0) . [0-9]+ | 0.0
-letra = [a-zA-Z] 
-identificador = [a-zA-Z_][a-zA-Z0-9_]*
+//numero = (-?)[1-9][0-9]* | 0
+//floatN = (((-?)[1-9][0-9]*) | 0) . [0-9]+ | 0.0
+
+
+//operador = "+" | "-" | "*" | "/" | "<" | ">" | "<=" | ">=" | "==" | "!="
+/**/
+LineTerminator = \r|\n|\r\n
+InputCharacter = [^\r\n]
+
+WhiteSpace = {LineTerminator} | [ \t\f]
+
+Comment = {EndOfLineComment} 
+
+EndOfLineComment = "@" {InputCharacter}* {LineTerminator}? 
+
+numero = 0 | [1-9][0-9]*
+identificador = [a-zA-Z_] [a-zA-Z0-9_]*
+float    = [0-9]+ \. [0-9]*
 simbolo = "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" 
     | "(" | ")" | "-" | "_" | "+" | "=" | "[" | "]" | "{" 
     | "}" | ";" | ":" | "\'" | '\"' | "," | "." | "<" | ">" 
     | "?" | "/" | "|" | "\\"
-//operador = "+" | "-" | "*" | "/" | "<" | ">" | "<=" | ">=" | "==" | "!="
 
+string = \"(\\.|[^\"])*\"
+char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
 //------estados
 %%
 
 //--------------------reglas lexicas
 
-//############################################################
-//remplazo estructura de los simbolos de las reglas lexicas
 <YYINITIAL>{
     "!"             {return symbol(REXC); }
     "@"             {return symbol(ARROBA); }
@@ -106,19 +119,27 @@ simbolo = "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*"
     "break"         {return symbol(BREAK); }
     "leer"          {return symbol(LEER); }
     "escribir"      {return symbol(ESCRIBIR); }
+
+    
+    //ER
+    {numero}            {return symbol(LITERAL_INT, new Integer(Integer.parseInt(yytext()))); }
+    {float}             {return symbol(LITERAL_FLOAT, new Float(yytext().substring(0,yylength()-1)));  }
+
+    {identificador}                   { return symbol(IDENTIFIER, yytext()); }
+    {string}                    {return symbol(LITERAL_STRING); }
+    {char}                    {return symbol(LITERAL_CHAR); }
+    //{simbolo}            {return symbol(simbolo, yytext()); }
+//<YYINITIAL> {operador}            {return new Symbol(operador, yycolumn, yyline, yytext()); }
+/* comments */
+    {Comment}                      { /* ignore */ }
+    /* whitespace */
+    {WhiteSpace}                   { /* ignore */ }
 }
-
-//ER
-<YYINITIAL> {numero}            {return new Symbol(sym.numero, yycolumn, yyline, yytext()); }
-<YYINITIAL> {floatN}      {return new Symbol(sym.floatN, yycolumn, yyline, yytext()); }
-<YYINITIAL> {letra}            {return new Symbol(sym.letra, yycolumn, yyline, yytext()); }
-<YYINITIAL> {identificador}      {return new Symbol(sym.IDENTIFICADOR, yycolumn, yyline, yytext()); }
-<YYINITIAL> {simbolo}            {return new Symbol(sym.simbolo, yycolumn, yyline, yytext()); }
-//<YYINITIAL> {operador}            {return new Symbol(sym.operador, yycolumn, yyline, yytext()); }
+//#################################################################################################
 
 
-//----------------espacios en blanco
-
-[\t\r\n\f] {/*ignore*/}
 
 
+[^]                              { throw new RuntimeException("Illegal character \""+yytext()+
+                                                              "\" at line "+yyline+", column "+yycolumn); }
+<<EOF>>                          { return symbol(EOF); }
