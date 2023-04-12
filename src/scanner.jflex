@@ -29,7 +29,7 @@ import java_cup.runtime.*;
 %}
 
 
-//----------Expresiones Regulares
+//------Expresiones Regulares
 
 //numero = (-?)[1-9][0-9]* | 0
 //floatN = (((-?)[1-9][0-9]*) | 0) . [0-9]+ | 0.0
