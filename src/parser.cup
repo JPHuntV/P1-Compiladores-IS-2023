@@ -1,35 +1,54 @@
 package src;
-import java_cup.runtime.Symbol;
+import java_cup.runtime.*;
 
-parser code{:
-    public String resultado = "";
-:}
+parser code  {:
 
 
+  public void report_error(String message, Object info) {
+    StringBuilder m = new StringBuilder("Error ");
+
+    if (info instanceof java_cup.runtime.Symbol)
+      m.append( "("+info.toString()+")" );
+
+    m.append(" : "+message);
+
+    System.out.println(m);
+  }
+
+  public void report_fatal_error(String message, Object info) {
+    report_error(message, info);
+    throw new RuntimeException("Fatal Syntax Error");
+  }
+:};
 
 
-
-action code {::}
 
 /*---------------------------declaraciones------------------------*/
 
-terminal REXC, ARROBA, HASH, DOLLAR, PORCIENTO, CONJ, AND, MULT, LPAREN, RPAREN, 
-            MENOS, GUIONBAJO, MAS, ASIGNACION, LBRACKET, RBRACKET, LBRACE, RBRACE, 
-            SEMICOLON, DOSPUNTOS, COMILLASIM, COMILLADOB, COMA, PUNTO, MENOR, MAYOR, 
-            RINTERRO, DIV, PIPE, SLASH, MENORIGUAL, MAYORIGUAL, EQUAL, NOTEQUAL, POTENCIA, 
+terminal REXC, ARROBA, OR, DOLLAR, AND, MULT, LPAREN, RPAREN, 
+            MENOS, MAS, ASIG, LBRACKET, RBRACKET, LBRACE, RBRACE, 
+             COMA, MENOR, MAYOR, 
+            DIV, MENORIGUAL, MAYORIGUAL, EQUAL, NOTEQUAL, POTENCIA, 
             MODULO, INCREMENTO, DECREMENTO, NOT, INT, FLOAT, STRING, CHAR, ARRAY, BOOL, 
-            MAIN, TRUE, FALSE, IF, ELIF, ELSE, WHILE, DO, FOR, RETURN, BREAK, LCOMENTB, 
-            RCOMENTB;
+            MAIN, IF, ELIF, ELSE, WHILE, DO, FOR, RETURN, BREAK, LEER, ESCRIBIR, LCOMENTB, 
+            RCOMENTB; 
 
-terminal String numero, letra, simbolo, operador;
+//terminal String letra, simbolo;
+terminal String LITERAL_INT, LITERAL_FLOAT, LITERAL_BOOL, LITERAL_CHAR, LITERAL_STRING;
+terminal String IDENTIFIER;
+
+non terminal  inicio, programa, main, funciones,
+    expresion, /*expresionAux, termino, factor, valor, opMult, */
+    opRelacional, operadorArit, operadorUnario, operadorLogico, expresionAritmetica, 
+    expresionRelacional, expresionLogica, expresionRelLog, terminoLogico, 
+    operandoArit, operandoRel, /*intLiteral, floatLiteral, stringLiteral, charLiteral, 
+    boolLiteral,*/ array, if, elif, while, doWhile, for, estructuraControl, return, 
+    break, argumentos, llamaFuncion, asignacion, sentencia, bloque, parametros, declaraFuncion,
+    tipo, declaraArray, declaraArrayAux, declaraVar, getValorArray, setValorArray, lectura, numerico, escritura, comentario;
 
 
-non terminal  inicio, expr;
-//precedencia
-precedence left MAS, MENOS;
-precedence left MULT, DIV;
 
-start with inicio;
+
 
 inicio ::= expr:e {: RESULT = e; :};
 
