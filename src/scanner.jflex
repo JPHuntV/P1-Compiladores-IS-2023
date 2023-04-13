@@ -41,7 +41,7 @@ EndOfLineComment = "@" {InputCharacter}* {LineTerminator}?
 numero = 0 | [1-9][0-9]*
 identificador = [a-zA-Z_] [a-zA-Z0-9_]*
 float    = [0-9]+ \. [0-9]*
-simbolo = "!" | "@" | "#" | "$" | "%" | "^" | "&" | "*" 
+simbolo = "!" | "@" | "#"  | "%" | "^" | "&" | "*" 
     | "(" | ")" | "-" | "_" | "+" | "=" | "[" | "]" | "{" 
     | "}" | ";" | ":" | "\'" | '\"' | "," | "." | "<" | ">" 
     | "?" | "/" | "|" | "\\"
@@ -103,7 +103,7 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     "main"          {return symbol(MAIN); }
     "true"          {return symbol(LITERAL_BOOL, true); }
     "false"         {return symbol(LITERAL_BOOL, false); }
-    "if"            {return symbol(IF); }
+    "if"            {return symbol(IF);  }
     "elif"          {return symbol(ELIF); }
     "else"          {return symbol(ELSE); }
     "while"         {return symbol(WHILE); }

@@ -1,0 +1,7 @@
+/_comentario de bloque _/
+int main () {
+if (temp == -12){
+
+break$
+}
+}
