@@ -1,27 +1,15 @@
 package src;
 import java_cup.runtime.*;
 
-parser code  {:
 
+parser code {:
+    
+    Analizador s;
+    parser(Analizador s){ this.s=s; }
+:}
 
-  public void report_error(String message, Object info) {
-    StringBuilder m = new StringBuilder("Error ");
-
-    if (info instanceof java_cup.runtime.Symbol)
-      m.append( "("+info.toString()+")" );
-
-    m.append(" : "+message);
-
-    System.out.println(m);
-  }
-
-  public void report_fatal_error(String message, Object info) {
-    report_error(message, info);
-    throw new RuntimeException("Fatal Syntax Error");
-  }
-:};
-
-
+//init with {: s.init(); :};
+scan with {: return s.next_token(); :};
 
 /*---------------------------declaraciones------------------------*/
 
@@ -68,19 +56,20 @@ precedence left  POTENCIA, MODULO;
 precedence left AND;
 precedence left OR;
 precedence nonassoc NOT, REXC;
-precedence left RPAREN;
-precedence left LPAREN;
+//precedence left RPAREN;
+//precedence left LPAREN;
 precedence right DOLLAR;
 precedence right IDENTIFIER;
+
 start with inicio;
 
 
 
-//inicio ::= programa:e {: RESULT = e; :};
-inicio ::= programa;
+inicio ::= programa:e {: RESULT = e; :};
+//inicio ::= programa;
 
 
-programa ::= main
+programa ::= main {: System.out.println("found main"); :}
     | funciones main
     | main funciones
     | funciones main funciones
@@ -103,8 +92,8 @@ funciones ::= funciones declaraFuncion
 
 //identificador ::= IDENTIFIER;
 
-expresion ::= expresionRelLog
-    |expresionAritmetica
+expresion ::= expresionRelLog{: System.out.println("found expresionlogica"); :}
+    |expresionAritmetica {: System.out.println("found expresionAritmetica"); :}
     ;
 
 /*
@@ -166,7 +155,7 @@ operadorLogico ::= AND
     ;
 
 expresionAritmetica ::= operandoArit 
-    | expresionAritmetica operadorArit operandoArit
+    | expresionAritmetica operadorArit operandoArit {: System.out.println("found expresionAritmetica operadorArit operandoArit"); :}
     ;
 
 expresionRelLog ::= expresionRelacional | expresionLogica ;
@@ -186,10 +175,10 @@ terminoLogico ::= aritBool
 
 aritBool ::= operadorArit | LITERAL_BOOL;
 
-operandoArit ::= IDENTIFIER:e {: RESULT = e; :}
+operandoArit ::= IDENTIFIER
     | LITERAL_INT 
     | LITERAL_FLOAT 
-    | llamaFuncion
+    | llamaFuncion {: System.out.println("found llamafuncion"); :}
     | operadorUnario
     | LBRACKET array RBRACKET
     ;
@@ -256,21 +245,21 @@ senFuncion ::= llamaFuncion DOLLAR ;
 
 asignacion ::= IDENTIFIER ASIG expresion DOLLAR;
 
-sentencia ::= asignacion
+sentencia ::= asignacion {: System.out.println("found asignacion"); :}
+    | funciones main
     | senFuncion
     | estructuraControl 
-    | expresion DOLLAR
-    | expresionRelLog
+    | expresion 
     | declaraArray
-    | declaraVar DOLLAR
+    | declaraVar 
     | return
-    | break DOLLAR
+    | break 
     | getValorArray
     | setValorArray
     //| comentario
     ;
 
-bloque ::= sentencia
+bloque ::= sentencia DOLLAR
     | bloque sentencia
     //| sentencia bloque
     ;
@@ -283,22 +272,25 @@ declaraFuncion ::= tipo IDENTIFIER LPAREN parametros RPAREN LBRACE bloque RBRACE
     | tipo IDENTIFIER LPAREN RPAREN LBRACE bloque RBRACE
     ;
 
-tipo ::= intChar
+tipo ::= INT
+    | CHAR
     |FLOAT
     |STRING
     |ARRAY
     |BOOL
     ;
 
-intChar ::= INT | CHAR;
-declaraArray ::=  intChar IDENTIFIER declaraArrayAux DOLLAR;
-    //| INT IDENTIFIER declaraArrayAux DOLLAR ;
+//intChar ::= INT {: System.out.println("found int"); :}
+//    | CHAR {: System.out.println("found char"); :};
+declaraArray ::=  INT IDENTIFIER declaraArrayAux DOLLAR
+    |CHAR IDENTIFIER declaraArrayAux DOLLAR;
 
 declaraArrayAux ::= LBRACKET LITERAL_INT RBRACKET
     //| declaraArrayAux LBRACKET LITERAL_INT RBRACKET 
     ;
 
-declaraVar ::= tipo IDENTIFIER ASIG expresion 
+declaraVar ::= INT IDENTIFIER ASIG expresion {: System.out.println("found declaraVar"); :}
+    | CHAR IDENTIFIER ASIG expresion
     | tipo IDENTIFIER declaraArrayAux ASIG expresion 
     ;
 
@@ -307,11 +299,11 @@ getValorArray ::= IDENTIFIER declaraArrayAux
 
 setValorArray ::= getValorArray ASIG expresion ;
 
-lectura ::= LEER LPAREN numerico RPAREN DOLLAR ;
+lectura ::= LEER LPAREN numerico RPAREN ;
 
 numerico ::= LITERAL_INT | LITERAL_FLOAT ; 
 
-escritura ::= ESCRIBIR LPAREN expresion RPAREN DOLLAR ;
+escritura ::= ESCRIBIR LPAREN expresion RPAREN ;
 
 comentario ::= ARROBA LITERAL_STRING
     | LCOMENTB LITERAL_STRING RCOMENTB
