@@ -13,7 +13,7 @@ scan with {: return s.next_token(); :};
 
 /*---------------------------declaraciones------------------------*/
 
-terminal REXC, ARROBA, OR, DOLLAR, AND, MULT, LPAREN, RPAREN, 
+terminal REXC, ARROBA, OR, AND, MULT, LPAREN , RPAREN, 
             MENOS, MAS, ASIG, LBRACKET, RBRACKET, LBRACE, RBRACE, 
              COMA, MENOR, MAYOR, 
             DIV, MENORIGUAL, MAYORIGUAL, EQUAL, NOTEQUAL, POTENCIA, 
@@ -23,7 +23,7 @@ terminal REXC, ARROBA, OR, DOLLAR, AND, MULT, LPAREN, RPAREN,
 
 //terminal String letra, simbolo;
 terminal String LITERAL_INT, LITERAL_FLOAT, LITERAL_BOOL, LITERAL_CHAR, LITERAL_STRING;
-terminal String IDENTIFIER;
+terminal String IDENTIFIER, DOLLAR;
 
 non terminal  inicio, programa, main, funciones,
     expresion, /*expresionAux, termino, factor, valor, opMult, */
@@ -43,6 +43,7 @@ non terminal intChar;
 non terminal aritBool;
 non terminal literales;
 non terminal argumento;
+non terminal lookahead;
 //non terminal simMenos;
 
 //precedencia
@@ -58,8 +59,11 @@ precedence left OR;
 precedence nonassoc NOT, REXC;
 //precedence left RPAREN;
 //precedence left LPAREN;
-precedence right DOLLAR;
-precedence right IDENTIFIER;
+//recedence right DOLLAR;
+
+precedence left CHAR, INT;
+precedence left IDENTIFIER;
+precedence left LPAREN,LBRACKET;
 
 start with inicio;
 
@@ -69,7 +73,7 @@ inicio ::= programa:e {: RESULT = e; :};
 //inicio ::= programa;
 
 
-programa ::= main {: System.out.println("found main"); :}
+programa ::= main {: System.out.println("encontro main"); :}
     | funciones main
     | main funciones
     | funciones main funciones
@@ -85,39 +89,14 @@ funciones ::= funciones declaraFuncion
 
 
 
-//operando ::= IDENTIFIER
-//    | intLiteral
-//    | llamaFuncion
-//    ;
 
 //identificador ::= IDENTIFIER;
 
-expresion ::= expresionRelLog{: System.out.println("found expresionlogica"); :}
-    |expresionAritmetica {: System.out.println("found expresionAritmetica"); :}
+expresion ::= expresionRelLog{: System.out.println("encontro expresionRellogica"); :}
+    |expresionAritmetica {: System.out.println("encontro expresionAritmetica"); :}
     ;
 
-/*
-    expresionAux ::= termino
-        |expresionAux opSuma termino
-        ;
 
-    termino ::= factor
-        | termino opMult factor
-        ;
-
-    factor ::= operadorUnario valor
-        | valor
-        ;
-
-    valor ::= aritBool
-        |LITERAL_STRING
-        |LITERAL_CHAR
-        //|LITERAL_BOOL
-        |IDENTIFIER array
-        ;
-//opSuma ::= MAS | meno ;
-
-*/
 operadorArit::= MAS
     | MENOS
     | MULT 
@@ -130,7 +109,7 @@ opRelacional ::= MENOR
     | MENORIGUAL
     | MAYOR
     | MAYORIGUAL
-    | igual
+    | igual {: System.out.println("encontro igual"); :}
     | noIgual
     ;
 igual ::= EQUAL
@@ -154,33 +133,37 @@ operadorLogico ::= AND
     |NOT
     ;
 
-expresionAritmetica ::= operandoArit 
-    | expresionAritmetica operadorArit operandoArit {: System.out.println("found expresionAritmetica operadorArit operandoArit"); :}
+expresionAritmetica ::= operandoArit {: System.out.println("encontro operandoArit"); :}
+    | expresionAritmetica operadorArit operandoArit {: System.out.println("encontro expresionAritmetica operadorArit operandoArit"); :}
     ;
 
-expresionRelLog ::= expresionRelacional | expresionLogica ;
+expresionRelLog ::= expresionRelacional {: System.out.println("encontro expresionRelacional"); :}
+    | expresionLogica {: System.out.println("encontro expresionLogica"); :}
+    ;
 
 expresionRelacional ::= operandoRel opRelacional operandoRel ;
 
-expresionLogica ::= terminoLogico
+expresionLogica ::= terminoLogico {: System.out.println("encontro terminoLogico"); :}
     | expresionLogica operadorLogico terminoLogico
     ;
 
 
 
-terminoLogico ::= aritBool
+terminoLogico ::= LITERAL_BOOL {: System.out.println("encontro aritBool"); :}
    // | expresionRelacional
     | LPAREN expresionRelacional RPAREN
     ;
 
-aritBool ::= operadorArit | LITERAL_BOOL;
+//aritBool ::= operandoArit 
+//    | LITERAL_BOOL {: System.out.println("encontro aritBool LITERAL_BOOL"); :} 
+  //  ;
 
-operandoArit ::= IDENTIFIER
-    | LITERAL_INT 
-    | LITERAL_FLOAT 
-    | llamaFuncion {: System.out.println("found llamafuncion"); :}
-    | operadorUnario
-    | LBRACKET array RBRACKET
+operandoArit ::= IDENTIFIER {: System.out.println("encontro operandoArit       identifier"); :}
+    | LITERAL_INT       {: System.out.println("encontro operandoArit       LITERAL_INT"); :}
+    | LITERAL_FLOAT     {: System.out.println("encontro operandoArit       LITERAL_FLOAT"); :}
+    | llamaFuncion      {: System.out.println("encontro llamafuncion"); :}
+    | operadorUnario    {: System.out.println("encontro operandoArit       operadorUnario"); :}
+    | LBRACKET array RBRACKET {: System.out.println("encontro operandoArit       array"); :}
     ;
 
 operandoRel ::= operandoArit 
@@ -201,10 +184,10 @@ array ::= expresion
     ;
 
 //estructuras de control
-if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
+if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE {: System.out.println("encontro if"); :}
     | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif
-    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif ELSE LBRACE bloque RBRACE
-    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ELSE LBRACE bloque RBRACE
+    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif ELSE LBRACE bloque RBRACE 
+    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ELSE LBRACE bloque RBRACE {: System.out.println("encontro if else"); :}
     ;
 
 elif ::= ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
@@ -235,7 +218,7 @@ argumentos ::= argumento
     | argumentos COMA expresion
     ;
 
-llamaFuncion ::= IDENTIFIER LPAREN RPAREN
+llamaFuncion ::= IDENTIFIER  LPAREN RPAREN
     | IDENTIFIER LPAREN argumentos RPAREN
     | lectura
     | escritura
@@ -243,25 +226,24 @@ llamaFuncion ::= IDENTIFIER LPAREN RPAREN
 
 senFuncion ::= llamaFuncion DOLLAR ;
 
-asignacion ::= IDENTIFIER ASIG expresion DOLLAR;
+asignacion ::= IDENTIFIER ASIG expresion;
 
-sentencia ::= asignacion {: System.out.println("found asignacion"); :}
+sentencia ::= asignacion DOLLAR  {: System.out.println("encontro asignacion"); :}
     | funciones main
-    | senFuncion
+    //| senFuncion
     | estructuraControl 
     | expresion 
-    | declaraArray
-    | declaraVar 
-    | return
-    | break 
-    | getValorArray
-    | setValorArray
-    //| comentario
+    | declaraArray DOLLAR
+    | declaraVar DOLLAR {: System.out.println("encontro sentencia -> declaraVar"); :}
+    | return DOLLAR
+    | break DOLLAR 
+    | getValorArray DOLLAR
+    | setValorArray DOLLAR
     ;
 
-bloque ::= sentencia DOLLAR
-    | bloque sentencia
-    //| sentencia bloque
+bloque ::= sentencia {: System.out.println("encontro sentencia"); :}
+    | bloque sentencia {: System.out.println("encontro bloque sentencia"); :}
+    //| sentencia bloque {: System.out.println("encontro sentencia bloque"); :}
     ;
 
 parametros ::= tipo IDENTIFIER
@@ -272,25 +254,25 @@ declaraFuncion ::= tipo IDENTIFIER LPAREN parametros RPAREN LBRACE bloque RBRACE
     | tipo IDENTIFIER LPAREN RPAREN LBRACE bloque RBRACE
     ;
 
-tipo ::= INT
-    | CHAR
+tipo ::= INT {: System.out.println("encontro int"); :}
+    | CHAR {: System.out.println("encontro char"); :}
     |FLOAT
     |STRING
     |ARRAY
     |BOOL
     ;
 
-//intChar ::= INT {: System.out.println("found int"); :}
-//    | CHAR {: System.out.println("found char"); :};
-declaraArray ::=  INT IDENTIFIER declaraArrayAux DOLLAR
-    |CHAR IDENTIFIER declaraArrayAux DOLLAR;
+//intChar ::= INT {: System.out.println("encontro int"); :}
+//    | CHAR {: System.out.println("encontro char"); :};
+declaraArray ::=  INT IDENTIFIER LBRACKET LITERAL_INT RBRACKET DOLLAR
+    |   CHAR IDENTIFIER LBRACKET LITERAL_INT RBRACKET DOLLAR;
 
 declaraArrayAux ::= LBRACKET LITERAL_INT RBRACKET
     //| declaraArrayAux LBRACKET LITERAL_INT RBRACKET 
     ;
 
-declaraVar ::= INT IDENTIFIER ASIG expresion {: System.out.println("found declaraVar"); :}
-    | CHAR IDENTIFIER ASIG expresion
+declaraVar ::= INT IDENTIFIER ASIG expresion {: System.out.println("encontro INT IDENTIFIER ASIG expresion"); :}
+    | CHAR IDENTIFIER  ASIG expresion
     | tipo IDENTIFIER declaraArrayAux ASIG expresion 
     ;
 
@@ -308,3 +290,6 @@ escritura ::= ESCRIBIR LPAREN expresion RPAREN ;
 comentario ::= ARROBA LITERAL_STRING
     | LCOMENTB LITERAL_STRING RCOMENTB
     ;
+
+
+lookahead::= ;

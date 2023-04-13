@@ -19,7 +19,7 @@ public class App {
             while(true){
                 token = analizador.next_token();
                 if(token.sym != 0)
-                    System.out.println("I: " + i + " Token: " + token.sym + ", valor "+analizador.yytext());
+                    System.out.println("I: " + i + "\tToken: " + token.sym + "\tvalor: "+analizador.yytext());
                 else{
                     System.out.println("Lexemas encontrados: " + i);
                     return;
