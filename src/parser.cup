@@ -44,6 +44,8 @@ non terminal aritBool;
 non terminal literales;
 non terminal argumento;
 non terminal lookahead;
+non terminal else;
+terminal uminus;
 //non terminal simMenos;
 
 //precedencia
@@ -53,9 +55,9 @@ non terminal lookahead;
 
 precedence left MAS, MENOS;
 precedence left MULT, DIV;
+precedence right uminus;
 precedence left  POTENCIA, MODULO;
-precedence left AND;
-precedence left OR;
+precedence left AND, OR;
 precedence nonassoc NOT, REXC;
 //precedence left RPAREN;
 //precedence left LPAREN;
@@ -98,7 +100,7 @@ expresion ::= expresionRelLog{: System.out.println("encontro expresionRellogica"
 
 
 operadorArit::= MAS
-    | MENOS
+    | MENOS {: System.out.println("encontro MENOS"); :}
     | MULT 
     | POTENCIA 
     | DIV 
@@ -120,15 +122,15 @@ noIgual ::=NOTEQUAL
     ;
 //operadorArit ::= opSuma | opMult;
 
-operadorUnario ::= MENOS numerico
-    | IDENTIFIER INCREMENTO
-    | IDENTIFIER DECREMENTO
+operadorUnario ::= MENOS numerico  {:System.out.println("encontro unario menos"); :} %prec uminus
+    | INCREMENTO IDENTIFIER {: System.out.println("encontro unario incremento "); :}
+    | DECREMENTO IDENTIFIER {: System.out.println("encontro unario decremento"); :}
     ;
 
 
 
 operadorLogico ::= AND
-    |OR
+    |OR {: System.out.println("encontro logico or "); :}
     |REXC
     |NOT
     ;
@@ -141,16 +143,17 @@ expresionRelLog ::= expresionRelacional {: System.out.println("encontro expresio
     | expresionLogica {: System.out.println("encontro expresionLogica"); :}
     ;
 
-expresionRelacional ::= operandoRel opRelacional operandoRel ;
+expresionRelacional ::= operandoRel opRelacional operandoRel {: System.out.println("encontro operandoRel opRelacional operandoRel"); :} ;
 
 expresionLogica ::= terminoLogico {: System.out.println("encontro terminoLogico"); :}
-    | expresionLogica operadorLogico terminoLogico
+    | expresionLogica operadorLogico terminoLogico {: System.out.println("encontro expresionLogica operadorLogico terminoLogico"); :}
     ;
 
 
 
-terminoLogico ::= LITERAL_BOOL {: System.out.println("encontro aritBool"); :}
+terminoLogico ::= LITERAL_BOOL {: System.out.println("encontro LITERAL_BOOL"); :}
    // | expresionRelacional
+   //|expresionAritmetica {: System.out.println("encontro expresionAritmetica"); :}
     | LPAREN expresionRelacional RPAREN
     ;
 
@@ -159,11 +162,12 @@ terminoLogico ::= LITERAL_BOOL {: System.out.println("encontro aritBool"); :}
   //  ;
 
 operandoArit ::= IDENTIFIER {: System.out.println("encontro operandoArit       identifier"); :}
+    | LITERAL_STRING {: System.out.println("encontro operandoArit       LITERAL_STRING"); :}
     | LITERAL_INT       {: System.out.println("encontro operandoArit       LITERAL_INT"); :}
     | LITERAL_FLOAT     {: System.out.println("encontro operandoArit       LITERAL_FLOAT"); :}
     | llamaFuncion      {: System.out.println("encontro llamafuncion"); :}
-    | operadorUnario    {: System.out.println("encontro operandoArit       operadorUnario"); :}
-    | LBRACKET array RBRACKET {: System.out.println("encontro operandoArit       array"); :}
+    | operadorUnario    {: System.out.println("encontro operandoArit  operadorUnarioxxx"); :}
+    | LBRACKET array RBRACKET {: System.out.println("encontro operandoArit array"); :}
     ;
 
 operandoRel ::= operandoArit 
@@ -184,15 +188,20 @@ array ::= expresion
     ;
 
 //estructuras de control
-if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE {: System.out.println("encontro if"); :}
-    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif
-    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif ELSE LBRACE bloque RBRACE 
-    | IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ELSE LBRACE bloque RBRACE {: System.out.println("encontro if else"); :}
+
+
+
+if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE 
+    //| IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif {: System.out.println("encontro if elif"); :}
+    //| IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE elif ELSE LBRACE bloque RBRACE {: System.out.println("encontro if elif else"); :}
+    //| IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ELSE LBRACE bloque RBRACE {: System.out.println("encontro if else"); :}
     ;
 
-elif ::= ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
+elif ::= ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE {: System.out.println("encontro elif"); :}
     | elif ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
     ;
+
+else ::= ELSE LBRACE bloque RBRACE;
 
 while ::= WHILE LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE ;
 
@@ -200,13 +209,18 @@ doWhile ::= DO LBRACE bloque RBRACE WHILE LPAREN expresionRelLog RPAREN DOLLAR ;
 
 for ::= FOR LPAREN declaraVar expresionRelLog DOLLAR expresion RPAREN LBRACE bloque RBRACE ;
 
-estructuraControl ::=  if 
+estructuraControl ::=  if {: System.out.println("encontro if"); :}
+    |if elif {: System.out.println("encontro if elif"); :}
+    |if elif else {: System.out.println("encontro if elif else"); :}
+    |if  else {: System.out.println("encontro if else"); :}
     | while 
     | doWhile 
     | for
     ;
 
-return ::= RETURN expresion DOLLAR ;
+return ::= RETURN expresion
+    |RETURN
+    ;
 
 break ::= BREAK ;
 
@@ -232,11 +246,11 @@ sentencia ::= asignacion DOLLAR  {: System.out.println("encontro asignacion"); :
     | funciones main
     //| senFuncion
     | estructuraControl 
-    | expresion 
+    | expresion DOLLAR
     | declaraArray DOLLAR
     | declaraVar DOLLAR {: System.out.println("encontro sentencia -> declaraVar"); :}
-    | return DOLLAR
-    | break DOLLAR 
+    | return DOLLAR {: System.out.println("encontro return dollar"); :}
+    | break DOLLAR {: System.out.println("encontro break DOLLAR"); :}
     | getValorArray DOLLAR
     | setValorArray DOLLAR
     ;
@@ -274,6 +288,7 @@ declaraArrayAux ::= LBRACKET LITERAL_INT RBRACKET
 declaraVar ::= INT IDENTIFIER ASIG expresion {: System.out.println("encontro INT IDENTIFIER ASIG expresion"); :}
     | CHAR IDENTIFIER  ASIG expresion
     | tipo IDENTIFIER declaraArrayAux ASIG expresion 
+    | tipo IDENTIFIER ASIG expresion 
     ;
 
 getValorArray ::= IDENTIFIER declaraArrayAux

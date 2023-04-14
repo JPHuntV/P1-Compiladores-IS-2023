@@ -36,6 +36,7 @@ public interface sym {
   public static final int ASIG = 11;
   public static final int RBRACKET = 13;
   public static final int EQUAL = 22;
+  public static final int uminus = 55;
   public static final int DECREMENTO = 27;
   public static final int error = 1;
   public static final int COMA = 16;
@@ -118,7 +119,8 @@ public interface sym {
   "LITERAL_CHAR",
   "LITERAL_STRING",
   "IDENTIFIER",
-  "DOLLAR"
+  "DOLLAR",
+  "uminus"
   };
 }
 
