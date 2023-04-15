@@ -56,7 +56,7 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
 
 <YYINITIAL>{
     "!"             {return symbol(REXC); }
-    "@"             {return symbol(ARROBA); }
+    //"@"             {return symbol(ARROBA); }
     "#"             {return symbol(OR); }
     "$"             {return symbol(DOLLAR); }
     //"%"             {return symbol(PORCIENTO); }

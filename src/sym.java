@@ -8,67 +8,63 @@ package src;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int LBRACKET = 12;
-  public static final int MULT = 6;
-  public static final int CHAR = 32;
-  public static final int NOTEQUAL = 23;
-  public static final int LPAREN = 7;
-  public static final int INT = 29;
-  public static final int ARRAY = 33;
-  public static final int FOR = 41;
+  public static final int LBRACKET = 11;
+  public static final int MULT = 5;
+  public static final int CHAR = 31;
+  public static final int NOTEQUAL = 22;
+  public static final int LPAREN = 6;
+  public static final int INT = 28;
+  public static final int ARRAY = 32;
+  public static final int FOR = 40;
   public static final int REXC = 2;
-  public static final int RPAREN = 8;
-  public static final int NOT = 28;
-  public static final int MENORIGUAL = 20;
-  public static final int AND = 5;
-  public static final int OR = 4;
-  public static final int BOOL = 34;
-  public static final int ARROBA = 3;
-  public static final int ESCRIBIR = 45;
-  public static final int DIV = 19;
-  public static final int INCREMENTO = 26;
-  public static final int IF = 36;
-  public static final int MAIN = 35;
-  public static final int RCOMENTB = 47;
-  public static final int MAYORIGUAL = 21;
+  public static final int RPAREN = 7;
+  public static final int NOT = 27;
+  public static final int MENORIGUAL = 19;
+  public static final int AND = 4;
+  public static final int OR = 3;
+  public static final int BOOL = 33;
+  public static final int ESCRIBIR = 44;
+  public static final int DIV = 18;
+  public static final int INCREMENTO = 25;
+  public static final int IF = 35;
+  public static final int MAIN = 34;
+  public static final int MAYORIGUAL = 20;
   public static final int EOF = 0;
-  public static final int RETURN = 42;
-  public static final int ASIG = 11;
-  public static final int RBRACKET = 13;
-  public static final int EQUAL = 22;
-  public static final int uminus = 55;
-  public static final int DECREMENTO = 27;
+  public static final int RETURN = 41;
+  public static final int ASIG = 10;
+  public static final int RBRACKET = 12;
+  public static final int EQUAL = 21;
+  public static final int uminus = 52;
+  public static final int DECREMENTO = 26;
   public static final int error = 1;
-  public static final int COMA = 16;
-  public static final int LITERAL_CHAR = 51;
-  public static final int MODULO = 25;
-  public static final int MENOS = 9;
-  public static final int MENOR = 17;
-  public static final int BREAK = 43;
-  public static final int LITERAL_FLOAT = 49;
-  public static final int MAYOR = 18;
-  public static final int POTENCIA = 24;
-  public static final int LITERAL_INT = 48;
-  public static final int ELSE = 38;
-  public static final int LBRACE = 14;
-  public static final int LITERAL_STRING = 52;
-  public static final int WHILE = 39;
-  public static final int DOLLAR = 54;
-  public static final int FLOAT = 30;
-  public static final int RBRACE = 15;
-  public static final int LEER = 44;
-  public static final int LITERAL_BOOL = 50;
-  public static final int STRING = 31;
-  public static final int ELIF = 37;
-  public static final int DO = 40;
-  public static final int IDENTIFIER = 53;
-  public static final int LCOMENTB = 46;
-  public static final int MAS = 10;
+  public static final int COMA = 15;
+  public static final int LITERAL_CHAR = 48;
+  public static final int MODULO = 24;
+  public static final int MENOS = 8;
+  public static final int MENOR = 16;
+  public static final int BREAK = 42;
+  public static final int LITERAL_FLOAT = 46;
+  public static final int MAYOR = 17;
+  public static final int POTENCIA = 23;
+  public static final int LITERAL_INT = 45;
+  public static final int ELSE = 37;
+  public static final int LBRACE = 13;
+  public static final int LITERAL_STRING = 49;
+  public static final int WHILE = 38;
+  public static final int DOLLAR = 51;
+  public static final int FLOAT = 29;
+  public static final int RBRACE = 14;
+  public static final int LEER = 43;
+  public static final int LITERAL_BOOL = 47;
+  public static final int STRING = 30;
+  public static final int ELIF = 36;
+  public static final int DO = 39;
+  public static final int IDENTIFIER = 50;
+  public static final int MAS = 9;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "REXC",
-  "ARROBA",
   "OR",
   "AND",
   "MULT",
@@ -111,8 +107,6 @@ public interface sym {
   "BREAK",
   "LEER",
   "ESCRIBIR",
-  "LCOMENTB",
-  "RCOMENTB",
   "LITERAL_INT",
   "LITERAL_FLOAT",
   "LITERAL_BOOL",
