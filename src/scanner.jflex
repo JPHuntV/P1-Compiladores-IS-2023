@@ -26,6 +26,10 @@ import java_cup.runtime.*;
   private Symbol symbol(int type, Object value) {
     return new Symbol(type, yyline+1, yycolumn+1, value);
   }
+
+  private void reportarError(){
+    System.out.println("Illegal character \""+yytext()+"\" at line "+yyline+", column "+yycolumn);
+  }
 %}
 
 
@@ -94,13 +98,13 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     "++"            {return symbol(INCREMENTO); }
     "--"            {return symbol(DECREMENTO); }
     "not"           {return symbol(NOT); }
-    "int"           {return symbol(INT); }
-    "float"         {return symbol(FLOAT); }
-    "string"        {return symbol(STRING); }
-    "char"          {return symbol(CHAR); }
-    "array"         {return symbol(ARRAY); }
-    "bool"          {return symbol(BOOL); }
-    "main"          {return symbol(MAIN); }
+    "int"           {return symbol(INT,yytext()); }
+    "float"         {return symbol(FLOAT,yytext()); }
+    "string"        {return symbol(STRING,yytext()); }
+    "char"          {return symbol(CHAR,yytext()); }
+    "array"         {return symbol(ARRAY,yytext()); }
+    "bool"          {return symbol(BOOL,yytext()); }
+    "main"          {return symbol(MAIN,yytext()); }
     "true"          {return symbol(LITERAL_BOOL, true); }
     "false"         {return symbol(LITERAL_BOOL, false); }
     "if"            {return symbol(IF);  }
@@ -111,8 +115,8 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
     "for"           {return symbol(FOR); }
     "return"        {return symbol(RETURN); }
     "break"         {return symbol(BREAK); }
-    "leer"          {return symbol(LEER); }
-    "escribir"      {return symbol(ESCRIBIR); }
+    "leer"          {return symbol(LEER,yytext()); }
+    "escribir"      {return symbol(ESCRIBIR,yytext()); }
 
     "/_"            { yybegin(COMMENTB); }
 
@@ -136,6 +140,7 @@ char = \'[a-zA-Z]\' |\'[0-9]\'|\'{simbolo}\'
 }
 
 
-[^]                              { throw new RuntimeException("Illegal character \""+yytext()+
-                                                              "\" at line "+yyline+", column "+yycolumn); }
+//[^]                              { throw new RuntimeException("Illegal character \""+yytext()+
+//                                                              "\" at line "+yyline+", column "+yycolumn); }
+[^]                              { reportarError(); }
 <<EOF>>                          { return symbol(EOF); }
