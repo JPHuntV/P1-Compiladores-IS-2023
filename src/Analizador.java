@@ -827,8 +827,13 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 57: break;
           case 2:
-            { throw new RuntimeException("Illegal character \""+yytext()+
-                                                              "\" at line "+yyline+", column "+yycolumn);
+            {
+              try {
+                throw new RuntimeException("Caracter Ilegal \""+yytext()+
+                                            "\" en la línea "+yyline+", columna "+yycolumn);
+                } catch (RuntimeException ex) {
+                System.out.println("\nError: "+ex.getMessage());
+                }
             }
           // fall through
           case 58: break;

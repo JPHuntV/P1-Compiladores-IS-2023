@@ -1,4 +1,4 @@
-/_comentario de bloque _/
+;;;;/_comentario de bloque _/
 int main () {
     do{
         int a = 1$
