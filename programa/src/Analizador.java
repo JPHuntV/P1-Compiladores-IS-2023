@@ -395,6 +395,10 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
     return new Symbol(type, yyline+1, yycolumn+1, value);
   }
 
+  private void reportarError(){
+    System.out.println("Illegal character \""+yytext()+"\" at line "+yyline+", column "+yycolumn);
+  }
+
 
   /**
    * Creates a new scanner
@@ -827,13 +831,7 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 57: break;
           case 2:
-            {
-              try {
-                throw new RuntimeException("Caracter Ilegal \""+yytext()+
-                                            "\" en la línea "+yyline+", columna "+yycolumn);
-                } catch (RuntimeException ex) {
-                System.out.println("\nError: "+ex.getMessage());
-                }
+            { reportarError();
             }
           // fall through
           case 58: break;
@@ -1023,7 +1021,7 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 95: break;
           case 40:
-            { return symbol(INT);
+            { return symbol(INT,yytext());
             }
           // fall through
           case 96: break;
@@ -1033,12 +1031,12 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 97: break;
           case 42:
-            { return symbol(BOOL);
+            { return symbol(BOOL,yytext());
             }
           // fall through
           case 98: break;
           case 43:
-            { return symbol(CHAR);
+            { return symbol(CHAR,yytext());
             }
           // fall through
           case 99: break;
@@ -1053,12 +1051,12 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 101: break;
           case 46:
-            { return symbol(LEER);
+            { return symbol(LEER,yytext());
             }
           // fall through
           case 102: break;
           case 47:
-            { return symbol(MAIN);
+            { return symbol(MAIN,yytext());
             }
           // fall through
           case 103: break;
@@ -1068,7 +1066,7 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 104: break;
           case 49:
-            { return symbol(ARRAY);
+            { return symbol(ARRAY,yytext());
             }
           // fall through
           case 105: break;
@@ -1083,7 +1081,7 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 107: break;
           case 52:
-            { return symbol(FLOAT);
+            { return symbol(FLOAT,yytext());
             }
           // fall through
           case 108: break;
@@ -1098,12 +1096,12 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
           // fall through
           case 110: break;
           case 55:
-            { return symbol(STRING);
+            { return symbol(STRING,yytext());
             }
           // fall through
           case 111: break;
           case 56:
-            { return symbol(ESCRIBIR);
+            { return symbol(ESCRIBIR,yytext());
             }
           // fall through
           case 112: break;

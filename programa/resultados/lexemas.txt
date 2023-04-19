@@ -117,8 +117,8 @@ Token: 43	valor: numero
 Token: 7	valor: )
 Token: 44	valor: $
 Token: 14	valor: }
-Token: 48	valor: char
-Token: 43	valor: residuoe
+Token: 45	valor: int
+Token: 43	valor: residuo2
 Token: 6	valor: (
 Token: 7	valor: )
 Token: 13	valor: {

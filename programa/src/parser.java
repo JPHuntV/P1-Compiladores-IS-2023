@@ -50,22 +50,22 @@ public class parser extends java_cup.runtime.lr_parser {
     "\003\000\002\020\003\000\002\020\003\000\002\020\003" +
     "\000\002\020\003\000\002\020\005\000\002\020\003\000" +
     "\002\021\003\000\002\021\003\000\002\021\005\000\002" +
-    "\055\003\000\002\055\003\000\002\055\003\000\002\055" +
-    "\003\000\002\055\003\000\002\055\005\000\002\022\003" +
+    "\053\003\000\002\053\003\000\002\053\003\000\002\053" +
+    "\003\000\002\053\003\000\002\053\005\000\002\022\003" +
     "\000\002\022\005\000\002\023\011\000\002\024\011\000" +
-    "\002\024\012\000\002\057\006\000\002\025\011\000\002" +
+    "\002\024\012\000\002\055\006\000\002\025\011\000\002" +
     "\026\013\000\002\027\015\000\002\030\003\000\002\030" +
     "\004\000\002\030\005\000\002\030\004\000\002\030\003" +
     "\000\002\030\003\000\002\030\003\000\002\031\004\000" +
-    "\002\031\003\000\002\032\003\000\002\056\003\000\002" +
-    "\056\003\000\002\033\003\000\002\033\005\000\002\034" +
+    "\002\031\003\000\002\032\003\000\002\054\003\000\002" +
+    "\054\003\000\002\033\003\000\002\033\005\000\002\034" +
     "\005\000\002\034\006\000\002\034\003\000\002\034\003" +
     "\000\002\035\005\000\002\036\004\000\002\036\003\000" +
     "\002\036\004\000\002\036\004\000\002\036\004\000\002" +
     "\036\004\000\002\036\004\000\002\036\004\000\002\036" +
     "\004\000\002\036\004\000\002\037\003\000\002\037\004" +
     "\000\002\040\004\000\002\040\006\000\002\041\012\000" +
-    "\002\041\011\000\002\060\003\000\002\042\003\000\002" +
+    "\002\041\011\000\002\056\003\000\002\042\003\000\002" +
     "\042\003\000\002\042\003\000\002\042\003\000\002\042" +
     "\003\000\002\042\003\000\002\043\010\000\002\043\010" +
     "\000\002\044\005\000\002\045\006\000\002\045\006\000" +
@@ -554,7 +554,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\017\042\020\050\021\044\023\067\025\070\026\107\027" +
     "\075\030\034\031\103\032\056\034\030\035\106\036\077" +
     "\037\043\042\073\043\051\045\072\046\104\047\045\050" +
-    "\035\052\040\060\046\001\001\000\002\001\001\000\036" +
+    "\035\052\040\056\046\001\001\000\002\001\001\000\036" +
     "\006\136\011\047\013\032\014\105\015\061\016\100\017" +
     "\042\020\050\021\044\022\352\034\030\046\120\050\035" +
     "\052\040\001\001\000\004\010\262\001\001\000\002\001" +
@@ -574,14 +574,14 @@ public class parser extends java_cup.runtime.lr_parser {
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\004\012\241\001\001\000\002\001\001\000\004" +
     "\051\235\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\006\024\212\057\211\001\001\000\002" +
+    "\002\001\001\000\006\024\212\055\211\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\004\044\112\001\001\000\002\001\001\000\010" +
-    "\033\131\055\134\056\125\001\001\000\002\001\001\000" +
+    "\033\131\053\134\054\125\001\001\000\002\001\001\000" +
     "\034\006\116\011\047\013\032\014\105\015\061\016\100" +
     "\017\042\020\050\021\044\034\030\046\120\050\035\052" +
     "\040\001\001\000\002\001\001\000\004\044\112\001\001" +
@@ -635,7 +635,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\061\016\100\017\042\020\050\021\044\034\030\046\120" +
     "\050\035\052\040\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\057\214\001\001\000\002\001\001\000\002\001" +
+    "\000\004\055\214\001\001\000\002\001\001\000\002\001" +
     "\001\000\030\011\047\014\105\015\061\016\216\017\042" +
     "\020\155\021\044\034\030\046\120\050\035\052\040\001" +
     "\001\000\002\001\001\000\002\001\001\000\070\006\064" +
@@ -731,7 +731,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\050\021\044\023\067\025\070\026\107\027\075\030\034" +
     "\031\103\032\056\034\030\035\106\036\077\037\043\042" +
     "\073\043\051\045\072\046\104\047\045\050\035\052\040" +
-    "\060\360\001\001\000\002\001\001\000\002\001\001\000" +
+    "\056\360\001\001\000\002\001\001\000\002\001\001\000" +
     "\010\005\364\041\014\042\013\001\001\000\002\001\001" +
     "\000\006\041\363\042\013\001\001\000\002\001\001\000" +
     "\006\041\363\042\013\001\001\000\002\001\001\000\002" +
@@ -919,16 +919,17 @@ class CUP$parser$actions {
 		 
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t )){
+                System.out.println("La funcion "+ (String) t +"  " + e + " ya fue declarada");
+                errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());
@@ -1137,7 +1138,7 @@ class CUP$parser$actions {
           case 27: // operadorLogico ::= OR 
             {
               Object RESULT =null;
-		 System.out.println("encontro logico or "); 
+
               CUP$parser$result = parser.getSymbolFactory().newSymbol("operadorLogico",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
@@ -1354,7 +1355,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1363,7 +1364,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1372,7 +1373,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1381,7 +1382,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1390,7 +1391,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1399,7 +1400,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",43, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("literales",41, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1453,7 +1454,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("else",45, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("else",43, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1579,7 +1580,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("argumento",44, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("argumento",42, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1588,7 +1589,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("argumento",44, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("argumento",42, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -1803,23 +1804,26 @@ class CUP$parser$actions {
           case 99: // declaraFuncion ::= tipo IDENTIFIER LPAREN parametros RPAREN LBRACE bloqueFunc RBRACE 
             {
               Object RESULT =null;
+		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)).right;
+		Object t = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-7)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).right;
 		String e = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-6)).value;
 		
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t)) {
+                System.out.println("La funcion "+ (String) t +"  " + e + " ya fue declarada");
                 errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());
@@ -1849,23 +1853,26 @@ class CUP$parser$actions {
           case 100: // declaraFuncion ::= tipo IDENTIFIER LPAREN RPAREN LBRACE bloqueFunc RBRACE 
             {
               Object RESULT =null;
+		int tleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)).right;
+		Object t = (Object)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-6)).value;
 		int eleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)).right;
 		String e = (String)((java_cup.runtime.Symbol) CUP$parser$stack.elementAt(CUP$parser$top-5)).value;
 		
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t)) {
+                System.out.println("La funcion \""+ (String) t +"  " + e + "\" ya fue declarada previamente");
                 errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());
@@ -1896,7 +1903,7 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("bloqueFunc",46, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("bloqueFunc",44, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 

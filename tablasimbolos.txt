@@ -1,8 +1,0 @@
-Tabla: residuo    valor: a    tipo: string
-Tabla: residuo    valor: numw    tipo: int
-Tabla: residuo    valor: num    tipo: int
-Tabla: residuo    valor: letra    tipo: char
-Tabla: main    valor: miBool    tipo: bool
-Tabla: main    valor: temp    tipo: int
-Tabla: main    valor: numero    tipo: int
-Tabla: main    valor: miString    tipo: string

@@ -55,13 +55,11 @@ non terminal  inicio, programa, main, funciones,expresion, opRelacional, operado
     parametros, declaraFuncion,tipo, declaraArray, declaraArrayAux, declaraVar, getValorArray, 
     setValorArray, lectura, numerico, escritura;
 
-    
-non terminal igual, noIgual;
+
 non terminal literales;
 non terminal argumento;
 non terminal else;
 non terminal bloqueFunc;
-non terminal bloqueMain;
 terminal uminus;
 
 
@@ -93,16 +91,17 @@ programa ::= main
 main ::= INT:t MAIN:e LPAREN RPAREN LBRACE bloque RBRACE {: 
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t )){
+                System.out.println("La funcion "+ (String) t +"  " + e + " ya fue declarada");
+                errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());
@@ -280,21 +279,21 @@ parametros ::= tipo:t IDENTIFIER:i {: listaParametros.addParameter(new ElementoT
     | parametros:p COMA tipo:t IDENTIFIER:i {:listaParametros.addParameter(new ElementoTabla(i,(String) t));:}
     ;
 
-declaraFuncion ::= tipo IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFunc RBRACE 
+declaraFuncion ::= tipo:t IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFunc RBRACE 
         {:
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t)) {
+                System.out.println("La funcion "+ (String) t +"  " + e + " ya fue declarada");
                 errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());
@@ -316,21 +315,21 @@ declaraFuncion ::= tipo IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFunc 
         listaParametros  = new ListaElementosTabla();
        
         :}
-    | tipo IDENTIFIER:e LPAREN RPAREN LBRACE bloqueFunc RBRACE
+    | tipo:t IDENTIFIER:e LPAREN RPAREN LBRACE bloqueFunc RBRACE
     {:
         Boolean existe = false;
         for (Funcion f : functions) {
-            if (f.getName().equals(e)) {
-                System.out.println("Funcion " + e + " ya fue declarada");
+            if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t)) {
+                System.out.println("La funcion \""+ (String) t +"  " + e + "\" ya fue declarada previamente");
                 errores = true;
                 existe = true;
             }
         }
         if(existe == false){
-            Funcion newFuncion = new Funcion(e, listaParametros.getParams());
+            Funcion newFuncion = new Funcion(e, listaParametros.getParams(), (String) t);
             functions.add(newFuncion);
 
-            SymbolTable symbolTable = new SymbolTable(e);
+            SymbolTable symbolTable = new SymbolTable(e,(String) t);
 
             for (ElementoTabla param : listaParametros.getParams()) {
                 symbolTable.addSymbol(param.getName(), param.getType());

@@ -1,0 +1,139 @@
+/_comentario de bloque _/
+
+int main () {
+    int temp = 12 ** residuo(45)$
+    if (temp == -12){
+        temp = read()$ 
+        temp = temp - --temp$
+        break$
+    }
+    else:
+    { 
+        temp = (var+23) > 45 ^ true # otra == dif $
+    }
+    string miString = “$#%&/()!¡¿??¡?”$
+    boolean miBool = 2 >= 7$
+    int numero = 45.5 / (34.0 ~ 4.0)$
+    print(numero)$
+}
+
+@Esto es un comentario de linea
+
+int residuo (int num){
+    return num + 10 * num$
+}
+
+
+programa
+funciones main funciones
+comentario main funciones declaraFuncion
+comentario main comentario declaraFuncion
+comentario int main () {bloque} comentario declaraFuncion
+comentario int main () {sentencia bloque} comentario declaraFuncion
+comentario int main () {declaraVar $ bloque} comentario declaraFuncion
+comentario int main () {tipo identificador = expresion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = termino $ bloque} comentario declaraFuncion
+comentario int main () {int temp = factor opMult factor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = valor ** valor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = intLiteral ** llamaFuncion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = numero ** llamaFuncion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** identificador ( argumentos) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (expresion) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (termino) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (factor) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (valor) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (intLiteral) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (numero) $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ sentencia bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ estructuraControl bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (sentencia) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (expresionRelLog) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (expresionRelacional) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (operandoRel opRelacional operandoRel) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (operandoArit == operandoArit) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (identificador == intLiteral) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == numero) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { bloque } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) {sentencia bloque} else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { sentencia sentencia bloque} else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { sentencia sentencia sentencia } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { asignacion asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { identificador = expresion $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = termino $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = factor $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = valor $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = llamaFuncion $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = identificador () $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ asignacion break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ identificador = expresion $ break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = termino opSuma termino $ break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = factor opSuma factor $ break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = valor opSuma operadorUnario valor $ break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = identificador - -- identificador $ break $ } else { bloque } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { sentencia } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { asignacion } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { identificador = expresion } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionRelLog } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionRelLog } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionLogica } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionLogica operadorLogico terminoLogico } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionLogica # terminoLogico } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionLogica operadorLogico terminoLogico # expresionRelacional } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = terminoLogico ^ terminoLogico # expresionRelacional } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = expresionRelacional ^ terminoLogico # expresionRelacional } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = operandoRel opRelacional operandoRel ^ terminoLogico # operandoRel opRelacional operandoRel } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (expresionAritmetica) opRelacional operandoArit ^ terminoLogico # operandoArit opRelacional operandoArit } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (expresionAritmetica) > operandoArit ^ operandoArit # terminoLogico == operandoArit } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (expresionAritmetica operadorArit operandoArit) > operandoArit ^ terminoLogico # operandoArit == operandoArit } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (identificador opSuma intLiteral) > intLiteral ^ boolLiteral # identificador == identificador } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + numero) > numero ^ true # otra == dif } bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } sentencia bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } declaraVar $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } tipo identificador = expresion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = termino $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = factor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = valor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = stringLiteral $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ sentencia bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ declaraVar $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ tipo identificador = expresion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = expresionRelLog $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = expresionRelacional $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = operandoRel opRelacional operandoRel $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = operandoArit >= operandoArit $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = intLiteral >= intLiteral $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = numero >= numero $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ sentencia bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ declaraVar $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ tipo identificador = expresion $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = termino $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = factor opMult factor opMult factor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = valor / valor ~ valor $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = floatLiteral / floatLiteral ~ floatLiteral $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = numero . numero / numero . numero ~ numero . numero $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ bloque} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ sentencia} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ llamaFuncion} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escritura} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( expresion)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( termino)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( factor)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( valor)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( identificador)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario declaraFuncion
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario tipo identificador (parametros){bloque}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( tipo identificador ){sentencia bloque}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return sentencia}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return expresion$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return termino opSuma termino$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return factor opSuma factor opMult factor$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return factor opSuma factor opMult factor$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return valor + valor * valor$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return identificador + intLiteral * identificador$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return num + numero * num$}
+comentario int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} comentario int residuo ( int num ){return num + 10 * num$}
+/_ stringLiteral _/ int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} @stringLiteral int residuo ( int num ){return num + 10 * num$}
+/_ comentario de bloque _/ int main () {int temp = 12 ** residuo (45) $ if (temp == -12) { temp = read () $ temp = temp - -- temp $ break $ } else { temp = (var + 23) > 45 ^ true # otra == dif } string miString = “$#%&/()!¡¿??¡?” $ bool miBool = 2 >= 7 $ int numero = 45.5 / 34.0 ~ 4.0 $ escribir ( numero)$} @Esto es un comentario de linea int residuo ( int num ){return num + 10 * num$}
+
