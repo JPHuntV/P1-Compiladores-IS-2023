@@ -7,13 +7,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 parser code {:
+    //indica si se ha encontrado un error durante el analisis
     Boolean errores = false;
+
+    //estructuras que almacenaran los simbolos de manera temporal durante
+    //la creacion de las tablas de simbolos
     ListaElementosTabla listaParametros = new ListaElementosTabla();
     ListaElementosTabla listaVariables = new ListaElementosTabla();
 
+    //estructura que almacena representaciones de las funciones que se hayan encontrado
     List<Funcion> functions = new ArrayList<Funcion>();
+
+    //estructura que almacena las tablas de simbolos definidas
     SymbolTableStack symbolTables = new SymbolTableStack();
     
+    /*
+    *existeFuncion
+    *E::nombre: nombre de la funcion a comprobar su existencia
+    *S::Valor booleano que indica la existencia de una funcion
+    *R::el nombre de la funcion debe ser un string
+    *O::comprobar si una funcion ya fue definidas
+    */
     private Boolean existeFuncion(String nombre){
         for(Funcion funcion : functions){
             if(funcion.getName() == nombre){
@@ -23,16 +37,30 @@ parser code {:
         return false;
     }
 
+    /*
+    *getSymbolTableStack
+    *E::ninguna
+    *S::Tablas de simbolos que han sido creadas
+    *R::ningua
+    *O::Retornar las tablas de simbolos que han sido creadas
+    */
     public SymbolTableStack getSymbolTableStack() {
         return symbolTables;
     }
 
     
-
+    /*
+    *getErrores
+    *E::ningua
+    *S::valor booleano que indica la existencia de algun error
+    *R::ninguna
+    *O::indicar si durante el parseo se encontro algun error
+    */
     public Boolean getErrores(){
         return errores;
     }
 
+    //instancia del analizador lexico creado en jflex
     Analizador s;
     parser(Analizador s){ this.s=s; }
 :}
@@ -43,7 +71,7 @@ scan with {: return s.next_token(); :};
 
 terminal REXC, OR, AND, MULT, LPAREN , RPAREN, MENOS, MAS, ASIG, LBRACKET, RBRACKET, LBRACE, RBRACE, 
     COMA, MENOR, MAYOR, DIV, MENORIGUAL, MAYORIGUAL, EQUAL, NOTEQUAL, POTENCIA, MODULO, INCREMENTO, 
-    DECREMENTO, NOT, IF, ELIF, ELSE, WHILE, DO, FOR, RETURN, BREAK, LEER, ESCRIBIR;
+    DECREMENTO, NOT, IF, ELIF, ELSE, WHILE, DO, FOR, RETURN, BREAK, LEER, ESCRIBIR, uminus;
 
 terminal String LITERAL_INT, LITERAL_FLOAT, LITERAL_BOOL, LITERAL_CHAR, LITERAL_STRING;
 terminal String IDENTIFIER, DOLLAR, INT, FLOAT, STRING, CHAR, ARRAY, BOOL,MAIN;
@@ -53,16 +81,10 @@ non terminal  inicio, programa, main, funciones,expresion, opRelacional, operado
     expresionRelLog, terminoLogico, operandoArit, operandoRel, array, if, elif, while, doWhile, 
     for, estructuraControl, return, break, argumentos, llamaFuncion, asignacion, sentencia, bloque, 
     parametros, declaraFuncion,tipo, declaraArray, declaraArrayAux, declaraVar, getValorArray, 
-    setValorArray, lectura, numerico, escritura;
+    setValorArray, lectura, numerico, escritura, literales, argumento,  else, bloqueFunc;
 
 
-non terminal literales;
-non terminal argumento;
-non terminal else;
-non terminal bloqueFunc;
-terminal uminus;
-
-
+//declaraciones de precedencia
 precedence left MAS, MENOS;
 precedence left MULT, DIV;
 precedence right uminus;
@@ -70,15 +92,14 @@ precedence left  POTENCIA, MODULO;
 precedence left AND, OR;
 precedence nonassoc NOT, REXC;
 precedence left DOLLAR;
-
 precedence left CHAR, INT;
 precedence left IDENTIFIER;
 precedence left LPAREN,LBRACKET;
 
-
+//punto de entrada al analisis
 start with inicio;
 
-inicio ::= programa:e {: RESULT = e; :};
+inicio ::= programa:e {:System.out.println("El programa ha sido parseado de manera exitosa"); RESULT = e; :};
 
 
 programa ::= main
@@ -88,7 +109,8 @@ programa ::= main
     ;
 
 
-main ::= INT:t MAIN:e LPAREN RPAREN LBRACE bloque RBRACE {: 
+main ::= INT:t MAIN:e LPAREN RPAREN LBRACE bloque RBRACE
+    {: 
         Boolean existe = false;
         for (Funcion f : functions) {
             if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t )){
@@ -114,18 +136,16 @@ main ::= INT:t MAIN:e LPAREN RPAREN LBRACE bloque RBRACE {:
                     symbolTable.addSymbol(par.getName(), par.getType());
                 }
             }
-
              getSymbolTableStack().push(symbolTable);  
         }
-
         listaVariables  = new ListaElementosTabla();
         listaParametros  = new ListaElementosTabla();
-       
-        :};
+    :};
 
 funciones ::= funciones declaraFuncion
     | declaraFuncion
     ;
+
 
 expresion ::= expresionRelLog
     |expresionAritmetica
@@ -140,6 +160,7 @@ operadorArit::= MAS
     | MODULO
     ;
 
+
 opRelacional ::= MENOR
     | MENORIGUAL
     | MAYOR
@@ -148,10 +169,12 @@ opRelacional ::= MENOR
     | NOTEQUAL 
     ;
 
+
 operadorUnario ::= MENOS numerico  %prec uminus
     | INCREMENTO IDENTIFIER 
     | DECREMENTO IDENTIFIER
     ;
+
 
 operadorLogico ::= AND
     |OR 
@@ -159,25 +182,29 @@ operadorLogico ::= AND
     |NOT
     ;
 
+
 expresionAritmetica ::= operandoArit 
     | expresionAritmetica operadorArit operandoArit
     ;
+
 
 expresionRelLog ::= expresionRelacional
     | expresionLogica
     ;
 
+
 expresionRelacional ::= operandoRel opRelacional operandoRel ;
+
 
 expresionLogica ::= terminoLogico
     | expresionLogica operadorLogico terminoLogico
     ;
 
 
-
 terminoLogico ::= LITERAL_BOOL
     | LPAREN expresionRelacional RPAREN
     ;
+
 
 operandoArit ::= IDENTIFIER
     | LITERAL_STRING 
@@ -190,10 +217,12 @@ operandoArit ::= IDENTIFIER
     | getValorArray
     ;
 
+
 operandoRel ::= operandoArit 
     | LITERAL_BOOL
     | LPAREN expresionAritmetica RPAREN
     ;
+
 
 literales ::= LITERAL_INT
     |LITERAL_FLOAT
@@ -203,52 +232,63 @@ literales ::= LITERAL_INT
     |LBRACKET array RBRACKET
     ;
 
+
 array ::= expresion  
     | array COMA expresion
     ;
 
 
-
 if ::= IF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE 
     ;
+
 
 elif ::= ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
     | elif ELIF LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE
     ;
 
+
 else ::= ELSE LBRACE bloque RBRACE;
+
 
 while ::= WHILE LPAREN expresionRelLog RPAREN LBRACE bloque RBRACE 
     ;
 
+
 doWhile ::= DO LBRACE bloque RBRACE WHILE LPAREN expresionRelLog RPAREN DOLLAR
     ;
+
 
 for ::= FOR LPAREN declaraVar DOLLAR expresionRelLog DOLLAR expresion  RPAREN LBRACE bloque RBRACE 
     ;
 
-estructuraControl ::=  if
+
+estructuraControl ::= if
     |if elif
     |if elif else
     |if  else
-    | while
-    | doWhile 
-    | for
+    |while
+    |doWhile 
+    |for
     ;
+
 
 return ::= RETURN expresion
     |RETURN
     ;
 
+
 break ::= BREAK;
+
 
 argumento ::= IDENTIFIER
     | literales
     ;
 
+
 argumentos ::= argumento
     | argumentos COMA expresion
     ;
+
 
 llamaFuncion ::= IDENTIFIER  LPAREN RPAREN
     | IDENTIFIER LPAREN argumentos RPAREN 
@@ -258,6 +298,7 @@ llamaFuncion ::= IDENTIFIER  LPAREN RPAREN
 
 
 asignacion ::= IDENTIFIER:e ASIG expresion ;
+
 
 sentencia ::= asignacion DOLLAR 
     | estructuraControl 
@@ -271,16 +312,19 @@ sentencia ::= asignacion DOLLAR
     | error DOLLAR {: System.out.println("##### Se ha encontrado un error de syntaxis, el parseo continuara"); errores = true;:}
     ;
 
+
 bloque ::= sentencia
     | bloque sentencia
     ;
+
 
 parametros ::= tipo:t IDENTIFIER:i {: listaParametros.addParameter(new ElementoTabla(i,(String) t));:}
     | parametros:p COMA tipo:t IDENTIFIER:i {:listaParametros.addParameter(new ElementoTabla(i,(String) t));:}
     ;
 
+
 declaraFuncion ::= tipo:t IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFunc RBRACE 
-        {:
+    {:
         Boolean existe = false;
         for (Funcion f : functions) {
             if (f.getName().equals(e) && f.getTipoRetorno().equals((String) t)) {
@@ -306,15 +350,13 @@ declaraFuncion ::= tipo:t IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFun
                     symbolTable.addSymbol(par.getName(), par.getType());
                 }
             }
-            
              getSymbolTableStack().push(symbolTable);
-            
         }
-
         listaVariables  = new ListaElementosTabla();
         listaParametros  = new ListaElementosTabla();
        
-        :}
+    :}
+
     | tipo:t IDENTIFIER:e LPAREN RPAREN LBRACE bloqueFunc RBRACE
     {:
         Boolean existe = false;
@@ -342,18 +384,16 @@ declaraFuncion ::= tipo:t IDENTIFIER:e LPAREN parametros RPAREN LBRACE bloqueFun
                     symbolTable.addSymbol(par.getName(), par.getType());
                 }
             }
-            
              getSymbolTableStack().push(symbolTable);
-            
         }
-
         listaVariables  = new ListaElementosTabla();
         listaParametros  = new ListaElementosTabla();
        
-        :}
-    ;
+    :};
 
-bloqueFunc ::= bloque;// {: popSymbolTable(); :};
+
+bloqueFunc ::= bloque;
+
 
 tipo ::= INT:e {:RESULT = e;:}
     | CHAR:e {: RESULT = e;:}
@@ -363,35 +403,43 @@ tipo ::= INT:e {:RESULT = e;:}
     |BOOL:e {: RESULT = e; :}
     ;
 
+
 declaraArray ::=  INT IDENTIFIER LBRACKET LITERAL_INT RBRACKET DOLLAR
     |   CHAR IDENTIFIER LBRACKET LITERAL_INT RBRACKET DOLLAR
     ;
 
+
 declaraArrayAux ::= LBRACKET LITERAL_INT RBRACKET
     ;
 
+
 declaraVar ::= INT:t IDENTIFIER:i ASIG expresion {:
-    listaVariables.addParameter(new ElementoTabla(i,(String) t));
- :}
+            listaVariables.addParameter(new ElementoTabla(i,(String) t));
+        :}  
     | CHAR:t IDENTIFIER:i  ASIG expresion {:
-    listaVariables.addParameter(new ElementoTabla(i,(String) t));
- :}
+            listaVariables.addParameter(new ElementoTabla(i,(String) t));
+        :}
     | tipo:t IDENTIFIER:i declaraArrayAux ASIG expresion{:
-    listaVariables.addParameter(new ElementoTabla(i,(String) t));
- :}
+            listaVariables.addParameter(new ElementoTabla(i,(String) t));
+        :}
     | tipo:t IDENTIFIER:i ASIG expresion {:
-    listaVariables.addParameter(new ElementoTabla(i,(String) t));
- :}
+            listaVariables.addParameter(new ElementoTabla(i,(String) t));
+        :}
     ;
+
 
 getValorArray ::= IDENTIFIER declaraArrayAux 
     ;
 
+
 setValorArray ::= getValorArray ASIG expresion   ;
+
 
 lectura ::= LEER LPAREN numerico RPAREN ;
 
+
 numerico ::= LITERAL_INT | LITERAL_FLOAT  ;
+
 
 escritura ::= ESCRIBIR LPAREN expresion RPAREN ; 
 

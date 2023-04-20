@@ -11,6 +11,13 @@ import java.util.Map;
 
 
 public class App {
+    /**
+     * analizar
+     * E::archivoFuente: ruta del archivo que contiene el codigo a analizar
+     * S::Escritura de un archivo .txt que contiene todos los tokens encontrados en archivoFuente
+     * R::archivoFuente debe ser una ruta valida
+     * O::Analizar los lexemas de un archivoFuente y listarlos en un archivo como resultado 
+     */
     public void analizar(String archivoFuente) {
         try {
             Reader reader = new BufferedReader(new FileReader(archivoFuente));
@@ -22,7 +29,6 @@ public class App {
                 token = analizador.next_token();
                 if(token.sym != 0){
                     System.out.println("I: " + i + "\tToken: " + token.sym + "\tvalor: "+analizador.yytext());
-                    
                     writer.write("Token: " + token.sym + "\tvalor: "+analizador.yytext());
                     writer.newLine();
                 }
@@ -39,6 +45,14 @@ public class App {
         }
     }
 
+    /**
+     * parsear
+     * E::archivoFuente: ruta del archivo que contiene el codigo a parsear
+     * S::Escritura de un archivo .txt que contiene las tablas de simbolos definidas durante el parseo 
+     * R::archivoFuente debe ser una ruta valida
+     * O::Analizar la estructura sintactica de un archivoFuente y listar las tablas de simbolos definidas en un archivoRespuesta,
+     * ademas de indicar si el archivo puede ser generado haciendo uso de la gramatica definida
+     */
     public void parsear(String archivoFuente) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("programa/resultados/tablasimbolos.txt"));

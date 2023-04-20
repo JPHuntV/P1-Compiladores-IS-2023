@@ -385,8 +385,15 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
   private boolean zzEOFDone;
 
   /* user code: */
-  StringBuilder string = new StringBuilder();
 
+  /**
+  *symbol
+  *E:: type: nombre que tomara la expresión como terminal en el parser
+        value: valor de dicha terminal
+  *S:: nuevo simbolo que contiene la información del token encontrado
+  *R:: el simbolo debe estar definido en la lista de lexemas
+  *O:: definir las terminales que podrá analizar la gramatica
+  */
   private Symbol symbol(int type) {
     return new Symbol(type, yyline+1, yycolumn+1);
   }
@@ -395,8 +402,16 @@ public class Analizador implements sym, java_cup.runtime.Scanner {
     return new Symbol(type, yyline+1, yycolumn+1, value);
   }
 
+  /**
+  *reportarError (modoPanico)
+  *E:: ninguna
+  *S:: mensaje en consola que indica que ha ocurrido un error
+  *R:: ninguna
+  *O:: indicar que se ha encontrado un lexema no valido y continuar con el analizis
+  */
   private void reportarError(){
-    System.out.println("Illegal character \""+yytext()+"\" at line "+yyline+", column "+yycolumn);
+    System.out.println("El lexema \""+yytext()+"\" at line "+yyline+", column "+yycolumn+" no está permitido.");
+    System.out.println("Este será ignorado y se continuará con el analisis");
   }
 
 
